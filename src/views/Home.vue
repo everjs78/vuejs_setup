@@ -7,7 +7,7 @@
 
 <script>
 // @ is an alias to /src
-import { Vertical } from '@aergoenterprise/lib-components/src/layout';
+import { Vertical } from "@aergoenterprise/lib-components/src/layout";
 import HelloWorld from "@/components/HelloWorld.vue";
 
 export default {
@@ -32,7 +32,8 @@ export default {
   .dialog-title {
     margin-bottom: 32px;
   }
-  .username, .password {
+  .username,
+  .password {
     margin-bottom: 16px;
   }
   .login-button {
