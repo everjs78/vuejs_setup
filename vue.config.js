@@ -1,6 +1,6 @@
 const appManifestPlugin = require('./src/appManifestPlugin');
 const webpack = require('webpack');
-const publicPath = '/';
+const publicPath = '';
 
 module.exports = {
     publicPath,
@@ -18,5 +18,6 @@ module.exports = {
         appManifestPlugin(publicPath),
         new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
       ],
-    }
+    },
+    chainWebpack: config => config.resolve.symlinks(false)
   }

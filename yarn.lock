@@ -2,6 +2,16 @@
 # yarn lockfile v1
 
 
+"@aergoenterprise/lib-components@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@aergoenterprise/lib-components/-/lib-components-0.1.0.tgz#4cc62d254112393ff57d1d09693ab324e32afcd9"
+  integrity sha512-U01hKplCyQDuDbevIddjIDdq7My5AM63eEPM+GZGxUtdzbEDVSUQxAZFuxHSfNf6T+5ehVFAMuAm7xRLb3I3dg==
+
+"@aergoenterprise/lib-visuals@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@aergoenterprise/lib-visuals/-/lib-visuals-0.1.0.tgz#9a280be5f1f8d89f76ffe3dd786940d1f00d6f25"
+  integrity sha512-NFlGhnUbFBGMEOHzVyjf2PZqEkHHfZutJD7tknxJnWEFawDgwK+pp2WLtn6xMEs26osez6CWGUkdB7oFwRRkvg==
+
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.10.3":
   version "7.10.3"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.10.3.tgz#324bcfd8d35cd3d47dae18cde63d752086435e9a"
