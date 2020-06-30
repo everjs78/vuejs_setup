@@ -34,7 +34,7 @@
     </v-app-bar>
 
     <v-content>
-      <HelloWorld />
+      <HelloI18n />
     </v-content>
   </div>
 </template>
@@ -42,12 +42,13 @@
 <script>
 // @ is an alias to /src
 //import { Vertical } from "@aergoenterprise/lib-components/src/layout";
-import HelloWorld from "@/components/HelloWorld.vue";
+//import HelloWorld from "@/components/HelloWorld.vue";
+import HelloI18n from "@/components/HelloI18n.vue";
 
 export default {
   name: "Home",
   components: {
-    HelloWorld
+    HelloI18n
   }
 };
 </script>

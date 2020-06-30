@@ -4,9 +4,11 @@ const publicPath = "";
 
 module.exports = {
   publicPath,
+
   devServer: {
     //proxy: 'http://localhost:5000'
   },
+
   configureWebpack: {
     devtool: "source-map",
     resolve: {
@@ -19,6 +21,16 @@ module.exports = {
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
     ]
   },
+
   chainWebpack: config => config.resolve.symlinks(false),
-  transpileDependencies: ["vuetify"]
+  transpileDependencies: ["vuetify"],
+
+  pluginOptions: {
+    i18n: {
+      locale: "en",
+      fallbackLocale: "en",
+      localeDir: "locales",
+      enableInSFC: true
+    }
+  }
 };
