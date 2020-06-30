@@ -1,0 +1,28 @@
+@import './normalize.scss';
+@import './_fonts.scss';
+@import './_typography.scss';
+@import './_forms.scss';
+@import './variables.scss';
+
+// Calculate CSS variables from SCSS variables
+:root {
+  --color-primary-hue: #{hue($_color-b-blue-500)}; // by changing hue, all calculated colors change. this allows easy theming
+  --color-primary: #{hsl(var(--color-primary-hue), saturation($_color-b-blue-500), lightness($_color-b-blue-500))};
+  --color-primary-50: #{hsl(var(--color-primary-hue), saturation($_color-b-blue-50), lightness($_color-b-blue-50))};
+  --color-primary-100: #{hsl(var(--color-primary-hue), saturation($_color-b-blue-100), lightness($_color-b-blue-100))};
+  --color-primary-150: #{hsl(var(--color-primary-hue), saturation($_color-b-blue-150), lightness($_color-b-blue-150))};
+  --color-primary-200: #{hsl(var(--color-primary-hue), saturation($_color-b-blue-200), lightness($_color-b-blue-200))};
+  --color-primary-300: #{hsl(var(--color-primary-hue), saturation($_color-b-blue-300), lightness($_color-b-blue-300))};
+  --color-primary-400: #{hsl(var(--color-primary-hue), saturation($_color-b-blue-400), lightness($_color-b-blue-400))};
+  --color-primary-500: #{hsl(var(--color-primary-hue), saturation($_color-b-blue-500), lightness($_color-b-blue-500))};
+  --color-primary-600: #{hsl(var(--color-primary-hue), saturation($_color-b-blue-600), lightness($_color-b-blue-600))};
+  --color-primary-700: #{hsl(var(--color-primary-hue), saturation($_color-b-blue-700), lightness($_color-b-blue-700))};
+  --color-primary-800: #{hsl(var(--color-primary-hue), saturation($_color-b-blue-800), lightness($_color-b-blue-800))};
+  --color-primary-900: #{hsl(var(--color-primary-hue), saturation($_color-b-blue-900), lightness($_color-b-blue-900))};
+  --color-primary-opacity-50: #{hsla(var(--color-primary-hue), saturation($_color-b-blue-500), lightness($_color-b-blue-500), 0.05)};
+  --color-primary-opacity-100: #{hsla(var(--color-primary-hue), saturation($_color-b-blue-500), lightness($_color-b-blue-500), 0.1)};
+  --color-primary-opacity-200: #{hsla(var(--color-primary-hue), saturation($_color-b-blue-500), lightness($_color-b-blue-500), 0.2)};
+  --color-primary-opacity-300: #{hsla(var(--color-primary-hue), saturation($_color-b-blue-500), lightness($_color-b-blue-500), 0.3)};
+  --color-primary-opacity-400: #{hsla(var(--color-primary-hue), saturation($_color-b-blue-500), lightness($_color-b-blue-500), 0.4)};
+  --color-primary-opacity-500: #{hsla(var(--color-primary-hue), saturation($_color-b-blue-500), lightness($_color-b-blue-500), 0.5)};
+}

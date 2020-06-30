@@ -1,0 +1,124 @@
+/* Colors based on blocko design system */
+
+// basic colors
+$color-white: #ffffff;
+$color-black: #000000;
+
+// greyscale
+$color-grey-50: #fcfcfc;
+$color-grey-100: #fafafa;
+$color-grey-200: #f2f2f2;
+$color-grey-300: #d9d9d9;
+$color-grey-400: #c3c3c3;
+$color-grey-500: #909090;
+$color-grey-600: #757575;
+$color-grey-700: #595959;
+$color-grey-800: #3e3e3e;
+$color-grey-900: #222222;
+$color-grey-opacity-50: rgba($color-grey-900, 0.01);
+$color-grey-opacity-100: rgba($color-grey-900, 0.02);
+$color-grey-opacity-200: rgba($color-grey-900, 0.05);
+$color-grey-opacity-300: rgba($color-grey-900, 0.15);
+$color-grey-opacity-400: rgba($color-grey-900, 0.25);
+$color-grey-opacity-500: rgba($color-grey-900, 0.50);
+$color-grey-opacity-600: rgba($color-grey-900, 0.60);
+$color-grey-opacity-700: rgba($color-grey-900, 0.65);
+$color-grey-opacity-800: rgba($color-grey-900, 0.80);
+$color-grey-opacity-900: rgba($color-grey-900, 1.00);
+
+// theme color
+// original definition in design
+// those are recalculated as into css variables in base.scss
+$_color-b-blue-50: #f6f6ff;
+$_color-b-blue-100: #e8edff;
+$_color-b-blue-150: #d6dfff;
+$_color-b-blue-200: #bac9fe;
+$_color-b-blue-300: #8ba4fe;
+$_color-b-blue-400: #5d80fd;
+$_color-b-blue-500: #466efd;
+$_color-b-blue-600: #3d60dd;
+$_color-b-blue-700: #3552be;
+$_color-b-blue-800: #2c459e;
+$_color-b-blue-900: #1a295f;
+
+// replace scss variables with css variables
+$color-b-blue-50: var(--color-primary-50);
+$color-b-blue-100: var(--color-primary-100);
+$color-b-blue-150: var(--color-primary-150);
+$color-b-blue-200: var(--color-primary-200);
+$color-b-blue-300: var(--color-primary-300);
+$color-b-blue-400: var(--color-primary-400);
+$color-b-blue-500: var(--color-primary-500);
+$color-b-blue-600: var(--color-primary-600);
+$color-b-blue-700: var(--color-primary-700);
+$color-b-blue-800: var(--color-primary-800);
+$color-b-blue-900: var(--color-primary-900);
+$color-blue-opacity-50: var(--color-primary-opacity-50);
+$color-blue-opacity-100: var(--color-primary-opacity-100);
+$color-blue-opacity-200: var(--color-primary-opacity-200);
+$color-blue-opacity-300: var(--color-primary-opacity-300);
+$color-blue-opacity-400: var(--color-primary-opacity-400);
+$color-blue-opacity-500: var(--color-primary-opacity-500);
+
+// green alert color : for success actions, positive actions
+$color-green-50: #f4fdfa;
+$color-green-100: #dff8f0;
+$color-green-200: #9fead3;
+$color-green-300: #60dcb5;
+$color-green-400: #20ce98;
+$color-green-500: #00c789;
+$color-green-600: #00ae78;
+$color-green-700: #009567;
+$color-green-800: #007c56;
+$color-green-900: #004b33;
+$color-green-opacity-50: rgba($color-green-500, 0.05);
+$color-green-opacity-100: rgba($color-green-500, 0.15);
+$color-green-opacity-200: rgba($color-green-500, 0.35);
+$color-green-opacity-300: rgba($color-green-500, 0.65);
+$color-green-opacity-400: rgba($color-green-500, 0.85);
+$color-green-opacity-500: rgba($color-green-500, 1.00);
+
+// red alert color : for critical actions, negative actions
+$color-red-50: #fff8f8;
+$color-red-100: #fde8e8;
+$color-red-200: #f9baba;
+$color-red-300: #f4888d;
+$color-red-400: #f05d5f;
+$color-red-500: #ee4648;
+$color-red-600: #d03d3f;
+$color-red-700: #b33536;
+$color-red-800: #952c2d;
+$color-red-900: #591a1b;
+$color-red-opacity-50: rgba($color-red-500, 0.05);
+$color-red-opacity-100: rgba($color-red-500, 0.15);
+$color-red-opacity-200: rgba($color-red-500, 0.35);
+$color-red-opacity-300: rgba($color-red-500, 0.65);
+$color-red-opacity-400: rgba($color-red-500, 0.85);
+$color-red-opacity-500: rgba($color-red-500, 1.00);
+
+// yellow alert color : for warning actions
+$color-yellow-50: #fffbee;
+$color-yellow-100: #fff9e5;
+$color-yellow-200: #ffecb3;
+$color-yellow-300: #ffdf80;
+$color-yellow-400: #ffd24d;
+$color-yellow-500: #ffcc33;
+$color-yellow-600: #dfb32d;
+$color-yellow-700: #bf9926;
+$color-yellow-800: #9f8020;
+$color-yellow-900: #604d13;
+$color-yellow-opacity-50: rgba($color-yellow-500, 0.05);
+$color-yellow-opacity-100: rgba($color-yellow-500, 0.15);
+$color-yellow-opacity-200: rgba($color-yellow-500, 0.35);
+$color-yellow-opacity-300: rgba($color-yellow-500, 0.65);
+$color-yellow-opacity-400: rgba($color-yellow-500, 0.85);
+$color-yellow-opacity-500: rgba($color-yellow-500, 1.00);
+
+
+/* Spacing */
+$base-spacing: 20px;
+$gutter: $base-spacing;
+
+/* Other */
+$box-radius: 3px;
+

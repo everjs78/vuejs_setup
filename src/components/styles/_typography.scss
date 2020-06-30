@@ -1,0 +1,26 @@
+@import './variables.scss';
+
+body {
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: greyscale;
+
+  font-size: (14/16)*1em;
+}
+
+code, .monospace {
+  font-family: 'Roboto Mono', monospace;
+  font-size: .95em;
+}
+
+p {
+  margin: 0 0 1.5em;
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: 500;
+  cursor: pointer;
+}
