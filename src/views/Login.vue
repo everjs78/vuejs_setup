@@ -6,7 +6,7 @@
           <div class="login-form">
             <!--<Logo :width="346" /> -->
             <div class="login-title">
-              {{ $t("title.login") }}
+              {{ $t('title.login') }}
             </div>
             <v-text-field
               v-model="userId"
@@ -31,7 +31,7 @@
               :label="$t('labels.remember_me')"
             />
             <v-btn block color="primary" height="60px">
-              {{ $t("buttons.login") }}
+              {{ $t('buttons.login') }}
             </v-btn>
           </div>
         </div>
@@ -47,29 +47,29 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import Vue from 'vue';
 //import Logo from '../../components/basic/Logo.vue';
 //import Copyrights from '../../components/basic/Copyrights.vue';
 
 export default Vue.extend({
-  name: "Login",
+  name: 'Login',
   components: {
     //Logo,
     //Copyrights,
   },
   data: () => ({
-    userId: "",
-    password: "",
+    userId: '',
+    password: '',
     rememberMe: false,
     rules: [
-      (value: any) => (value && value.length >= 8) || "Must be 8~16 characters"
+      (value: any) => (value && value.length >= 8) || 'Must be 8~16 characters'
     ]
   })
 });
 </script>
 
 <style lang="scss">
-@import "@/components/styles/variables.scss";
+@import '@/components/styles/variables.scss';
 
 .component.login {
   width: 100%;

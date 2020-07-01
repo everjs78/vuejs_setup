@@ -1,6 +1,6 @@
-const appManifestPlugin = require("./src/appManifestPlugin");
-const webpack = require("webpack");
-const publicPath = "";
+const appManifestPlugin = require('./src/appManifestPlugin');
+const webpack = require('webpack');
+const publicPath = '';
 
 module.exports = {
   publicPath,
@@ -10,7 +10,7 @@ module.exports = {
   },
 
   configureWebpack: {
-    devtool: "source-map",
+    devtool: 'source-map',
     resolve: {
       alias: {
         //'vue$': require('path').resolve(__dirname, '../../node_modules/vue/dist/vue.runtime.esm.js')
@@ -23,13 +23,13 @@ module.exports = {
   },
 
   chainWebpack: config => config.resolve.symlinks(false),
-  transpileDependencies: ["vuetify"],
+  transpileDependencies: ['vuetify'],
 
   pluginOptions: {
     i18n: {
-      locale: "en",
-      fallbackLocale: "en",
-      localeDir: "locales",
+      locale: 'en',
+      fallbackLocale: 'en',
+      localeDir: 'locales',
       enableInSFC: true
     }
   }
