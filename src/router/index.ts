@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
 import Home from '../views/Home.vue';
-import Main from '../views/Main.vue';
+import MainFrame from '../views/MainFrame.vue';
 import Login from '../views/Login.vue';
 
 Vue.use(VueRouter);
@@ -9,13 +9,20 @@ Vue.use(VueRouter);
 const routes: Array<RouteConfig> = [
   {
     path: '/',
-    name: 'Main',
-    component: Main
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: Login
+    name: 'MainFrame',
+    component: MainFrame,
+    children: [
+      {
+        path: '',
+        name: 'Home',
+        component: Home
+      },
+      {
+        path: '/login',
+        name: 'login',
+        component: Login
+      }
+    ]
   },
   {
     path: '/about',

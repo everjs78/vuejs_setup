@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header></Header>
-    <Body> </Body>
+    <router-view class="router-view" />
     <Footer> </Footer>
   </div>
 </template>
@@ -9,13 +9,11 @@
 <script>
 import Header from '@/components/basic/Header.vue';
 import Footer from '@/components/basic/Footer.vue';
-import Body from '@/components/basic/Body.vue';
 
 export default {
-  name: 'Main',
+  name: 'MainFrame',
   components: {
     Header,
-    Body,
     Footer
   },
   props: {
