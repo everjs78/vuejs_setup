@@ -9,7 +9,7 @@
 
       <!-- MenuLink 
       <v-row justify="center" no-gutters>-->
-      <v-row class="ml-8">
+      <v-row class="ml-8" v-if="!loggined">
         <v-btn
           v-for="link in links"
           :key="link"
@@ -20,13 +20,22 @@
         >
           {{ link }}
         </v-btn>
-      </v-row>
-      <v-spacer></v-spacer>
+        <v-spacer></v-spacer>
 
-      <v-btn small class="mx-2" color="primary" outlined width="100px"
-        >Login</v-btn
-      >
-      <v-btn small class="mx-2" color="primary" width="100px">Signup</v-btn>
+        <v-btn small class="mx-2" color="primary" outlined width="100px"
+          >Login</v-btn
+        >
+        <v-btn small class="mx-2" color="primary" width="100px">Signup</v-btn>
+      </v-row>
+      <v-row class="ml-8" v-else>
+        <v-spacer></v-spacer>
+        <v-btn icon class="ml-8">
+          <v-icon dark>mdi-bell</v-icon>
+        </v-btn>
+        <v-avatar color="indigo">
+          <v-icon dark>mdi-account-circle</v-icon>
+        </v-avatar>
+      </v-row>
     </v-app-bar>
   </div>
 </template>
@@ -35,7 +44,7 @@
 export default {
   name: 'Header',
   props: {
-    source: String
+    loggined: { type: Boolean, default: false } // TODO get loginstatus
   },
 
   data: () => ({

@@ -1,37 +1,71 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
-import Home from '../views/Home.vue';
 import MainFrame from '../views/MainFrame.vue';
+import ProjectFrame from '../views/ProjectFrame.vue';
+import Home from '../views/Home.vue';
 import Login from '../views/Login.vue';
+import Projects from '../views/Projects.vue';
+import Activity from '../views/Activity.vue';
 
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   {
     path: '/',
-    name: 'MainFrame',
     component: MainFrame,
     children: [
       {
         path: '',
-        name: 'Home',
+        name: 'main',
         component: Home
       },
       {
-        path: '/login',
+        path: 'login',
         name: 'login',
         component: Login
       }
     ]
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/project',
+    component: ProjectFrame,
+    children: [
+      {
+        path: '',
+        name: 'project-main',
+        component: Projects // TODO replace Projects
+      },
+      {
+        path: 'projects',
+        name: 'projects',
+        component: Projects // TODO replace Projects
+      },
+      {
+        path: 'activity',
+        name: 'activity',
+        component: Activity // TODO replace Projects
+      },
+      {
+        path: 'billing',
+        name: 'billing',
+        component: Activity // TODO replace Projects
+      },
+      {
+        path: 'document',
+        name: 'document',
+        component: Activity // TODO replace Projects
+      },
+      {
+        path: 'support',
+        name: 'support',
+        component: Activity // TODO replace Projects
+      },
+      {
+        path: 'setting',
+        name: 'setting',
+        component: Activity // TODO replace Projects
+      }
+    ]
   }
 ];
 
