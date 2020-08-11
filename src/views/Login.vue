@@ -26,10 +26,7 @@
               hint="At least 8 characters"
               required
             />
-            <v-checkbox
-              v-model="rememberMe"
-              :label="$t('labels.remember_me')"
-            />
+            <v-checkbox v-model="rememberMe" :label="$t('labels.remember_me')" />
             <v-btn block color="primary" height="60px">
               {{ $t('buttons.login') }}
             </v-btn>
@@ -42,7 +39,6 @@
       </div>
       -->
     </div>
-    <toast-center />
   </div>
 </template>
 
@@ -61,10 +57,8 @@ export default Vue.extend({
     userId: '',
     password: '',
     rememberMe: false,
-    rules: [
-      (value: any) => (value && value.length >= 8) || 'Must be 8~16 characters'
-    ]
-  })
+    rules: [(value: any) => (value && value.length >= 8) || 'Must be 8~16 characters'],
+  }),
 });
 </script>
 

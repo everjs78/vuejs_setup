@@ -17,16 +17,16 @@ export default {
   components: {
     Header,
     SideMenu,
-    Footer
+    Footer,
   },
   props: {
-    source: String
+    source: String,
   },
   data: () => ({
-    drawer: null
+    drawer: null,
   }),
   created() {
     this.$vuetify.theme.dark = false;
-  }
+  },
 };
 </script>

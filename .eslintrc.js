@@ -19,7 +19,6 @@ module.exports = {
     quotes: [2, 'single', { avoidEscape: false }],
     '@typescript-eslint/no-var-requires': 0,
     '@typescript-eslint/no-unused-vars': 0,
-    '@typescript-eslint/no-explicit-any': 'off',
-    'comma-dangle': ['error', 'never']
+    '@typescript-eslint/no-explicit-any': 'off'
   }
 };

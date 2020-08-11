@@ -19,6 +19,6 @@ export default Vue.extend({
   name: 'Projects',
   created() {
     this.$vuetify.theme.dark = false;
-  }
+  },
 });
 </script>

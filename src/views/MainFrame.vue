@@ -14,16 +14,16 @@ export default {
   name: 'MainFrame',
   components: {
     Header,
-    Footer
+    Footer,
   },
   props: {
-    source: String
+    source: String,
   },
   data: () => ({
-    drawer: null
+    drawer: null,
   }),
   created() {
     this.$vuetify.theme.dark = false;
-  }
+  },
 };
 </script>
