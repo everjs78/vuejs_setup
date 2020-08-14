@@ -1,9 +1,15 @@
 <template>
-  <v-footer id="footer" class="d-block py-6" color="grey darken-4" dark>
+  <v-footer id="footer" class="d-block py-6">
     <v-container class="text-center">
       <v-row>
-        <v-col cols="12">
-          <span> Footer</span>
+        <v-col cols="1">
+          <Logo />
+        </v-col>
+        <v-col cols="8">
+          <LinkBox />
+        </v-col>
+        <v-col cols="3">
+          Follow us
           <a
             v-for="(social, i) in socials"
             :key="i"
@@ -14,7 +20,8 @@
             target="_blank"
             rel="noopener"
           >
-            <v-icon dark v-text="social.icon" />
+            <span class="mdi" :class="social.icon" />
+            <!--<v-icon dark v-text="social.icon" />-->
           </a>
         </v-col>
       </v-row>
@@ -23,8 +30,15 @@
 </template>
 
 <script>
+import Logo from './Logo.vue';
+import LinkBox from './LinkBox.vue';
+
 export default {
   name: 'Footer',
+  components: {
+    Logo,
+    LinkBox,
+  },
   props: {
     source: String,
   },
@@ -32,29 +46,19 @@ export default {
     email: '',
     socials: [
       {
-        icon: 'mdi-reddit',
-        href: 'https://www.reddit.com/r/vuetifyjs',
-        title: 'Reddit',
+        icon: 'mdi-facebook',
+        href: 'https://www.facebook.com/',
+        title: 'Facebook',
       },
       {
-        icon: 'mdi-medium',
+        icon: 'mdi-facebook',
         href: 'https://medium.com/vuetify',
         title: 'Medium',
-      },
-      {
-        icon: 'mdi-github',
-        href: 'https://github.com/vuetifyjs/vuetify',
-        title: 'Github',
       },
       {
         icon: 'mdi-twitter',
         href: 'https://twitter.com/vuetifyjs',
         title: 'Twitter',
-      },
-      {
-        icon: 'mdi-discord',
-        href: 'https://community.vuetifyjs.com',
-        title: 'Discord Community',
       },
     ],
   }),

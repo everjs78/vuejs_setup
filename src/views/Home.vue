@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-main>
-      <v-responsive min-height="100vh">
+      <v-responsive min-height="50vh">
         <section id="home" class="white">
           <HomeIntro />
           <HomeFeature />

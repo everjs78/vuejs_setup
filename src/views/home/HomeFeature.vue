@@ -1,6 +1,6 @@
 <template>
   <v-container fluid class="home-features py-4">
-    <v-responsive :max-width="1280" class="mx-auto pa-6" min-height="30vh">
+    <v-responsive :max-width="1280" class="mx-auto pa-6" min-height="20vh">
       <v-container class="pa-0">
         <v-row align="center">
           <h1 class="home-features features-title">Features</h1>
