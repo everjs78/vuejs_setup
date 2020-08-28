@@ -1,15 +1,9 @@
 <template>
-  <div>
-    <v-main>
-      <v-responsive min-height="50vh">
-        <section id="document" class="white">
-          <div>
-            support
-          </div>
-        </section>
-      </v-responsive>
-    </v-main>
-  </div>
+  <section id="document" class="white">
+    <div>
+      support
+    </div>
+  </section>
 </template>
 
 <script>

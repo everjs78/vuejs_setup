@@ -1,45 +1,53 @@
 <template>
-  <div>
-    <div class="component login d-flex flex-column">
-      <v-card flat>
-        <div class="login-form-container d-flex flex-column align-center">
-          <div class="login-form">
-            <!--<Logo :width="346" /> -->
-            <div class="login-title">
-              {{ $t('title.login') }}
+  <v-row align="center" justify="center">
+    <v-col cols="12" sm="8" md="4">
+      <div class="component login d-flex flex-column">
+        <v-card flat>
+          <div class="login-form-container d-flex flex-column align-center">
+            <div class="login-form">
+              <!--<Logo :width="346" /> -->
+              <div class="login-title">
+                {{ $t('title.login') }}
+              </div>
+              <v-text-field v-model="userId" :label="$t('labels.user_id')" required autofocus />
+              <v-text-field
+                v-model="password"
+                type="password"
+                :label="$t('labels.password')"
+                :rules="rules"
+                counter
+                maxlength="16"
+                hint="At least 8 characters"
+                required
+              />
+
+              <v-checkbox v-model="rememberMe" :label="$t('labels.remember_me')" />
+              <v-btn block color="primary" height="40px">
+                {{ $t('buttons.login') }}
+              </v-btn>
+              <v-row justify="center">
+                <v-col><v-divider class="login-divider" cols="4" /> </v-col>
+                <v-col cols="2"> <div class="divider-text">OR</div></v-col>
+                <v-col><v-divider class="login-divider" cols="4" /> </v-col>
+              </v-row>
+              <v-btn block color="primary" outlined class="login-button">
+                <v-icon size="medium" class="login-button-icon">mdi-facebook</v-icon>
+                <div class="login-button-label">{{ $t('buttons.login-facebook') }}</div>
+              </v-btn>
+              <v-btn block color="primary" outlined class="login-button">
+                <v-icon size="small" class="login-button-icon">mdi-google</v-icon>
+                <div class="login-button-label">{{ $t('buttons.login-google') }}</div>
+              </v-btn>
             </div>
-            <v-text-field
-              v-model="userId"
-              :label="$t('labels.user_id')"
-              :placeholder="$t('placeholders.user_id')"
-              required
-              autofocus
-            />
-            <v-text-field
-              v-model="password"
-              type="password"
-              :label="$t('labels.password')"
-              :placeholder="$t('placeholders.password')"
-              :rules="rules"
-              counter
-              maxlength="16"
-              hint="At least 8 characters"
-              required
-            />
-            <v-checkbox v-model="rememberMe" :label="$t('labels.remember_me')" />
-            <v-btn block color="primary" height="60px">
-              {{ $t('buttons.login') }}
-            </v-btn>
           </div>
-        </div>
-      </v-card>
-      <!--
+        </v-card>
+        <!--
       <div class="copyright-container d-flex flex-column align-center">
         <Copyrights />
       </div>
-      -->
-    </div>
-  </div>
+      --></div>
+    </v-col>
+  </v-row>
 </template>
 
 <script lang="ts">
@@ -96,7 +104,24 @@ export default Vue.extend({
         margin-bottom: 16px;
       }
       .login-button {
-        margin-top: 32px;
+        margin-top: 10px;
+        height: 30px;
+      }
+      .login-divider {
+        margin-top: 10px;
+      }
+      .divider-text {
+        font-size: 12px;
+        text-align: center;
+        width: 100px;
+        max-width: 100%;
+      }
+      .login-button-icon {
+        margin-right: 5px;
+      }
+      .login-button-label {
+        width: 100px;
+        text-align: left;
       }
     }
   }
@@ -116,16 +141,14 @@ export default Vue.extend({
       "login": "Login to your account"
     },
     "labels": {
-      "user_id": "ID",
+      "user_id": "Email",
       "password": "Password",
       "remember_me": "Remember me"
     },
-    "placeholders": {
-      "user_id": "Type ID",
-      "password": "Type password"
-    },
     "buttons": {
-      "login": "Login"
+      "login": "Login",
+      "login-facebook": "Facebook",
+      "login-google": "Google"
     }
   },
   "ko": {
@@ -142,7 +165,9 @@ export default Vue.extend({
       "password": "비밀번호를 입력하세요"
     },
     "buttons": {
-      "login": "로그인"
+      "login": "로그인",
+      "login-facebook": "페이스북",
+      "login-google": "구글"
     }
   }
 }

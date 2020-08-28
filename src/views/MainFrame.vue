@@ -1,7 +1,11 @@
 <template>
   <div>
     <Header></Header>
-    <router-view class="router-view" />
+    <v-main>
+      <v-responsive min-height="100vh">
+        <router-view class="router-view" />
+      </v-responsive>
+    </v-main>
     <Footer> </Footer>
   </div>
 </template>

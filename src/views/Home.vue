@@ -1,14 +1,8 @@
 <template>
-  <div>
-    <v-main>
-      <v-responsive min-height="50vh">
-        <section id="home" class="white">
-          <HomeIntro />
-          <HomeFeature />
-        </section>
-      </v-responsive>
-    </v-main>
-  </div>
+  <section id="home" class="white">
+    <HomeIntro />
+    <HomeFeature />
+  </section>
 </template>
 
 <script>

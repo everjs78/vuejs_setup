@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-app-bar app clipped-left>
+    <v-app-bar app clipped-left flat>
       <!--<v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>-->
       <HubLogo />
       <!--
@@ -19,8 +19,12 @@
         </v-btn>
         <v-spacer></v-spacer>
 
-        <v-btn small class="mx-2" color="primary" outlined width="100px">Login</v-btn>
-        <v-btn small class="mx-2" color="primary" width="100px">Signup</v-btn>
+        <v-btn small class="mx-2" color="primary" outlined width="100px" :to="loginLink.login.to">{{
+          loginLink.login.label
+        }}</v-btn>
+        <v-btn small class="mx-2" color="primary" width="100px" :to="loginLink.login.to">{{
+          loginLink.signUp.label
+        }}</v-btn>
       </v-row>
       <v-row class="ml-8" v-else>
         <v-spacer></v-spacer>
@@ -63,6 +67,16 @@ export default {
         to: 'support',
       },
     ],
+    loginLink: {
+      login: {
+        label: 'Login',
+        to: 'login',
+      },
+      signUp: {
+        label: 'Signup',
+        to: 'signup',
+      },
+    },
   }),
   created() {
     this.$vuetify.theme.dark = false;
