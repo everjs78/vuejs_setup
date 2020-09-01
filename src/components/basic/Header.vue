@@ -29,7 +29,7 @@
 
 <script>
 import HubLogo from './HubLogo.vue';
-import Profile from '@/views/project/Profile.vue';
+import Profile from './Profile.vue';
 
 export default {
   name: 'Header',

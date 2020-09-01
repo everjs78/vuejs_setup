@@ -7,8 +7,8 @@ import Document from '../views/Document.vue';
 import Support from '../views/Support.vue';
 import Pricing from '../views/Pricing.vue';
 import Login from '../views/Login.vue';
-import Projects from '../views/Projects.vue';
-import Activity from '../views/Activity.vue';
+import Projects from '@/views/project/Projects.vue';
+import Activity from '@/views/project/Activity.vue';
 
 Vue.use(VueRouter);
 

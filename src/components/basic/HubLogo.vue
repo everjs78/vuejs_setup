@@ -4,11 +4,12 @@
     :aria-label="this.homeLink.label"
     class="d-none d-sm-flex align-center text--primary home-link-href"
     :title="this.homeLink.title"
+    @click.native="$vuetify.goTo(0)"
   >
     <v-img
       src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-light.png"
       alt="Vuetify Logo"
-      class="shrink mr-2"
+      class="mr-2"
       contain
       transition="scale-transition"
       width="40"
