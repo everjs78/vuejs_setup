@@ -5,7 +5,42 @@ import store from './store';
 import vuetify from './plugins/vuetify';
 import i18n from './i18n';
 
+import Rest from './plugins/rest';
+
 Vue.config.productionTip = false;
+Vue.use(Rest, {
+  //baseUrl: 'https://localhost:8000/ui/v1',
+  init: (axios: any) => {
+    axios.interceptors.response.use(
+      (response: any) => {
+        if (response.data.message) {
+          /*
+          Toasts.EventBus.$emit('add', {
+            type: 'success',
+            text: response.data.message,
+            autoClose: toastDefaultAutoClose,
+          });
+          */
+        }
+        return response;
+      },
+      (error: any) => {
+        if (!error.response) {
+          router.push('/error/disconnected');
+        } else {
+          /*
+          Toasts.EventBus.$emit('add', {
+            type: 'danger',
+            text: error.response.data.message,
+            autoClose: toastDefaultAutoClose,
+          });
+          */
+        }
+        return Promise.reject(error);
+      },
+    );
+  },
+});
 
 new Vue({
   router,

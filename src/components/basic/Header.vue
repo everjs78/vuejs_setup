@@ -12,7 +12,7 @@
           loginLink.login.label
         }}</v-btn>
 
-        <v-btn small class="mx-2" color="primary" width="100px" :to="loginLink.login.to">{{
+        <v-btn small class="mx-2" color="primary" width="100px" :to="loginLink.signUp.to">{{
           loginLink.signUp.label
         }}</v-btn>
       </v-row>

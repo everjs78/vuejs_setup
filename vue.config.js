@@ -4,9 +4,8 @@ const publicPath = '';
 
 module.exports = {
   publicPath,
-
   devServer: {
-    //proxy: 'http://localhost:5000'
+    proxy: 'https://localhost:8000',
   },
 
   configureWebpack: {
@@ -14,15 +13,12 @@ module.exports = {
     resolve: {
       alias: {
         //'vue$': require('path').resolve(__dirname, '../../node_modules/vue/dist/vue.runtime.esm.js')
-      }
+      },
     },
-    plugins: [
-      appManifestPlugin(publicPath),
-      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
-    ]
+    plugins: [appManifestPlugin(publicPath), new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)],
   },
 
-  chainWebpack: config => config.resolve.symlinks(false),
+  chainWebpack: (config) => config.resolve.symlinks(false),
   transpileDependencies: ['vuetify'],
 
   pluginOptions: {
@@ -30,7 +26,7 @@ module.exports = {
       locale: 'en',
       fallbackLocale: 'en',
       localeDir: 'locales',
-      enableInSFC: true
-    }
-  }
+      enableInSFC: true,
+    },
+  },
 };
