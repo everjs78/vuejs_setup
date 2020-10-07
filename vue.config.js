@@ -5,7 +5,11 @@ const publicPath = '';
 module.exports = {
   publicPath,
   devServer: {
-    proxy: 'https://localhost:8000',
+    proxy: {
+      '/ui/v1': {
+        target: 'https://localhost:8000',
+      },
+    },
   },
 
   configureWebpack: {

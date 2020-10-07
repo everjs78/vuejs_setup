@@ -1,55 +1,59 @@
 <template>
-  <v-row align="center" justify="center">
-    <v-col cols="12" sm="8" md="4">
-      <div class="component login d-flex flex-column">
-        <v-card flat>
-          <div class="login-form-container d-flex flex-column align-center">
-            <div class="login-form">
-              <!--<Logo :width="346" /> -->
-              <span class="label-text">{{ $t('labels.user_id') }}</span>
-              <v-text-field
-                v-model="userId"
-                autofocus
-                outlined
-                :rules="[rules.required, rules.email]"
-                maxlength="100"
-              />
-              <span class="label-text">{{ $t('labels.password') }}</span>
+  <v-form ref="form" v-model="isValid" lazy-validation @submit.prevent="trySignUp">
+    <v-row align="center" justify="center">
+      <v-col cols="12" sm="8" md="4">
+        <div class="component login d-flex flex-column">
+          <v-card flat>
+            <div class="login-form-container d-flex flex-column align-center">
+              <div class="login-form">
+                <!--<Logo :width="346" /> -->
+                <span class="label-text">{{ $t('labels.user_id') }}</span>
+                <v-text-field
+                  v-model="userId"
+                  autofocus
+                  :rules="[rules.required, rules.email]"
+                  maxlength="100"
+                  outlined
+                  required
+                />
+                <span class="label-text">{{ $t('labels.password') }}</span>
+                <v-text-field
+                  v-model="password"
+                  type="password"
+                  :rules="[rules.required, rules.password]"
+                  maxlength="16"
+                  outlined
+                  required
+                />
 
-              <v-text-field
-                v-model="password"
-                type="password"
-                :rules="[rules.required, rules.password]"
-                maxlength="16"
-                outlined
-              />
-
-              <v-btn block color="primary" height="40px" @click="trySignUp">
-                {{ $t('buttons.sign_up') }}
-              </v-btn>
-              <v-row justify="center">
-                <v-col><v-divider class="login-divider" cols="4" /> </v-col>
-                <v-col cols="2"> <div class="divider-text">OR</div></v-col>
-                <v-col><v-divider class="login-divider" cols="4" /> </v-col>
-              </v-row>
-              <v-btn block color="primary" outlined class="login-button">
-                <v-icon size="medium" class="login-button-icon">mdi-facebook</v-icon>
-                <div class="login-button-label">{{ $t('buttons.login-facebook') }}</div>
-              </v-btn>
-              <v-btn block color="primary" outlined class="login-button">
-                <v-icon size="small" class="login-button-icon">mdi-google</v-icon>
-                <div class="login-button-label">{{ $t('buttons.login-google') }}</div>
-              </v-btn>
+                <v-btn block color="primary" height="40px" type="submit" :disabled="!isValid">
+                  {{ $t('buttons.sign_up') }}
+                </v-btn>
+                <v-row justify="center">
+                  <v-col><v-divider class="login-divider" cols="4" /> </v-col>
+                  <v-col cols="2"> <div class="divider-text">OR</div></v-col>
+                  <v-col><v-divider class="login-divider" cols="4" /> </v-col>
+                </v-row>
+                <v-btn block color="primary" outlined class="login-button">
+                  <v-icon size="medium" class="login-button-icon">mdi-facebook</v-icon>
+                  <div class="login-button-label">{{ $t('buttons.login-facebook') }}</div>
+                </v-btn>
+                <v-btn block color="primary" outlined class="login-button">
+                  <v-icon size="small" class="login-button-icon">mdi-google</v-icon>
+                  <div class="login-button-label">{{ $t('buttons.login-google') }}</div>
+                </v-btn>
+              </div>
             </div>
-          </div>
-        </v-card>
-        <!--
+          </v-card>
+          <!--
       <div class="copyright-container d-flex flex-column align-center">
         <Copyrights />
       </div>
-      --></div>
-    </v-col>
-  </v-row>
+      -->
+        </div>
+      </v-col>
+    </v-row>
+  </v-form>
 </template>
 
 <script lang="ts">
@@ -58,7 +62,7 @@ import Vue from 'vue';
 //import Copyrights from '../../components/basic/Copyrights.vue';
 
 export default Vue.extend({
-  name: 'Login',
+  name: 'SignUp',
   components: {
     //Logo,
     //Copyrights,
@@ -67,19 +71,26 @@ export default Vue.extend({
     userId: '',
     password: '',
     rememberMe: false,
+    isValid: false,
   }),
   methods: {
     trySignUp(): void {
+      console.log('try submit');
+      if (!(this.$refs.form as Vue & { validate: () => boolean }).validate()) {
+        return;
+      }
+
       this.$rest
         .post('/ui/v1/signup', {
           userid: this.userId,
           password: this.password,
         })
-        .then((data: any) => {
+        .then((data) => {
+          console.log('signup ok');
           this.$router.replace({ name: 'projects' });
         })
-        .catch((error: any) => {
-          console.log('api server err' + error);
+        .catch((error) => {
+          console.log('api server err');
           throw error;
         });
     },
@@ -175,7 +186,7 @@ export default Vue.extend({
       "login-google": "Google"
     },
     "rules": {
-      "required": "Required",
+      "required": "Required field",
       "email": "Invalid e-mail",
       "password": "Must be 8~16 characters"
     }
