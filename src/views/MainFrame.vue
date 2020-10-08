@@ -2,7 +2,7 @@
   <div>
     <Header></Header>
     <v-main>
-      <v-responsive min-height="100vh">
+      <v-responsive min-height="70vh">
         <router-view class="router-view" />
       </v-responsive>
     </v-main>

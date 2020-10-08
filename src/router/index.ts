@@ -8,6 +8,7 @@ import Support from '../views/Support.vue';
 import Pricing from '../views/Pricing.vue';
 import Login from '../views/Login.vue';
 import SignUp from '../views/SignUp.vue';
+import Welcome from '../views/Welcome.vue';
 import Projects from '@/views/project/Projects.vue';
 import Activity from '@/views/project/Activity.vue';
 
@@ -47,6 +48,11 @@ const routes: Array<RouteConfig> = [
         path: 'signup',
         name: 'signup',
         component: SignUp,
+      },
+      {
+        path: 'welcome',
+        name: 'welcome',
+        component: Welcome,
       },
     ],
   },

@@ -1,5 +1,5 @@
 <template>
-  <v-form ref="form" v-model="isValid" lazy-validation @submit.prevent="trySignUp">
+  <v-form ref="form" v-model="valid" lazy-validation @submit.prevent="trySignUp">
     <v-row align="center" justify="center">
       <v-col cols="12" sm="8" md="4">
         <div class="component login d-flex flex-column">
@@ -8,13 +8,13 @@
               <div class="login-form">
                 <!--<Logo :width="346" /> -->
                 <span class="label-text">{{ $t('labels.user_id') }}</span>
+
                 <v-text-field
                   v-model="userId"
-                  autofocus
                   :rules="[rules.required, rules.email]"
                   maxlength="100"
                   outlined
-                  required
+                  height="36px"
                 />
                 <span class="label-text">{{ $t('labels.password') }}</span>
                 <v-text-field
@@ -23,10 +23,10 @@
                   :rules="[rules.required, rules.password]"
                   maxlength="16"
                   outlined
-                  required
+                  height="36px"
                 />
 
-                <v-btn block color="primary" height="40px" type="submit" :disabled="!isValid">
+                <v-btn block color="primary" height="40px" type="submit" :disabled="!valid">
                   {{ $t('buttons.sign_up') }}
                 </v-btn>
                 <v-row justify="center">
@@ -71,7 +71,7 @@ export default Vue.extend({
     userId: '',
     password: '',
     rememberMe: false,
-    isValid: false,
+    valid: false,
   }),
   methods: {
     trySignUp(): void {
@@ -86,11 +86,12 @@ export default Vue.extend({
           password: this.password,
         })
         .then((data) => {
-          console.log('signup ok');
-          this.$router.replace({ name: 'projects' });
+          console.log('signup ok' + this.userId);
+          window.localStorage.setItem('userId', this.userId);
+          this.$router.replace({ name: 'welcome' });
         })
         .catch((error) => {
-          console.log('api server err');
+          console.log('api server err' + error);
           throw error;
         });
     },
@@ -128,6 +129,12 @@ export default Vue.extend({
       box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
       background-color: #ffffff;
 
+      .v-text-field .v-input__control .v-input__slot {
+        min-height: auto !important;
+        display: flex !important;
+        align-items: center !important;
+      }
+
       .logo {
         align-content: center;
         margin: 20px 0 56px;
@@ -139,7 +146,7 @@ export default Vue.extend({
       }
       .username,
       .password {
-        margin-bottom: 16px;
+        height: 36px;
       }
       .login-button {
         margin-top: 10px;
