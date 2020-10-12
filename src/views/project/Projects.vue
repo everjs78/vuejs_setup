@@ -30,14 +30,16 @@ export default Vue.extend({
   },
   created() {
     this.$vuetify.theme.dark = false;
+    this.getProjects();
   },
   data() {
     return {
-      projects: [
+      projects: [],
+      /*[
         { name: 'project1', desc: 'desc for project1' },
         { name: 'project2', desc: 'desc for project2' },
         { name: 'project3', desc: 'desc for project3' },
-      ],
+      ],*/
       summary: {
         apps: [
           { count: 5, name: 'Applications' },
@@ -48,18 +50,17 @@ export default Vue.extend({
       },
     };
   },
-  mounted() {
-    console.log('mount projects');
-
-    this.$rest
-      .get('/ui/v1/projects')
-      .then((data) => {
+  methods: {
+    async getProjects() {
+      const data = await this.$rest.get('/ui/v1/projects');
+      if (data) {
         console.log('projects:', data);
-      })
-      .catch((error) => {
-        console.log('project error:', error);
-        throw error;
-      });
+        this.projects = data.items.map((project) => ({
+          name: project.name,
+          desc: project.description,
+        }));
+      }
+    },
   },
 });
 </script>
