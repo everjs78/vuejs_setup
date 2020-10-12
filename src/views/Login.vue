@@ -81,9 +81,10 @@ export default Vue.extend({
       this.$rest
         .get('/ui/v1/login', undefined, { auth: { username: this.userId, password: this.password } })
         .then((data) => {
-          console.log('login ok' + this.userId);
-          window.localStorage.setItem('userId', this.userId);
-          this.$router.replace({ name: 'welcome' });
+          console.log('login ok' + data.access_token);
+          window.localStorage.setItem('token', data.access_token);
+          this.$rest.setDefaultAccessToken(data.access_token);
+          this.$router.replace({ name: 'project-main' });
         })
         .catch((error) => {
           console.log('api server err' + error);

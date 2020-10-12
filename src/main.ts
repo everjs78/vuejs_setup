@@ -11,6 +11,11 @@ Vue.config.productionTip = false;
 Vue.use(Rest, {
   //baseUrl: 'https://localhost:8000/ui/v1',
   init: (axios: any) => {
+    const accessToken = window.localStorage.getItem('accessToken');
+    if (accessToken) {
+      axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+    }
+
     axios.interceptors.response.use(
       (response: any) => {
         if (response.data.message) {

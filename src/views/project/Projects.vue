@@ -48,6 +48,19 @@ export default Vue.extend({
       },
     };
   },
+  mounted() {
+    console.log('mount projects');
+
+    this.$rest
+      .get('/ui/v1/projects')
+      .then((data) => {
+        console.log('projects:', data);
+      })
+      .catch((error) => {
+        console.log('project error:', error);
+        throw error;
+      });
+  },
 });
 </script>
 

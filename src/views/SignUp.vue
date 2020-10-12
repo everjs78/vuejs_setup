@@ -203,10 +203,6 @@ export default Vue.extend({
       "password": "비밀번호",
       "remember_me": "아이디 기억하기"
     },
-    "placeholders": {
-      "user_id": "아이디를 입력하세요",
-      "password": "비밀번호를 입력하세요"
-    },
     "buttons": {
       "sign_up": "회원 가입",
       "login-facebook": "페이스북",

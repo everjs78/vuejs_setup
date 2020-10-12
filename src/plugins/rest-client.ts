@@ -84,6 +84,13 @@ export default class RestClient {
   public async deleteRaw<ItemType = any>(endpoint: string, config?: RequestConfig): Promise<AxiosResponse> {
     return this.myAxios.delete<ItemType>(this.urlFor(endpoint), this.configFor(config));
   }
+
+  public setDefaultAccessToken(accessToken: string) {
+    if (accessToken !== undefined) {
+      this.myAxios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+    }
+  }
+
   private configFor(config?: RequestConfig): AxiosRequestConfig {
     const resConfig: AxiosRequestConfig = {
       headers: {
