@@ -92,7 +92,6 @@ export default Vue.extend({
         })
         .catch((error) => {
           console.log('api server err' + error);
-          throw error;
         });
     },
   },
@@ -209,7 +208,7 @@ export default Vue.extend({
       "password": "비밀번호를 입력하세요"
     },
     "buttons": {
-      "login": "로그인",
+      "sign_up": "회원 가입",
       "login-facebook": "페이스북",
       "login-google": "구글"
     },

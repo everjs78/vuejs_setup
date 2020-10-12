@@ -1,53 +1,58 @@
 <template>
-  <v-row align="center" justify="center">
-    <v-col cols="12" sm="8" md="4">
-      <div class="component login d-flex flex-column">
-        <v-card flat>
-          <div class="login-form-container d-flex flex-column align-center">
-            <div class="login-form">
-              <!--<Logo :width="346" /> -->
-              <div class="login-title">
-                {{ $t('title.login') }}
-              </div>
-              <v-text-field v-model="userId" :label="$t('labels.user_id')" required autofocus />
-              <v-text-field
-                v-model="password"
-                type="password"
-                :label="$t('labels.password')"
-                :rules="rules"
-                counter
-                maxlength="16"
-                hint="At least 8 characters"
-                required
-              />
+  <v-form ref="form" v-model="valid" lazy-validation @submit.prevent="tryLogin">
+    <v-row align="center" justify="center">
+      <v-col cols="12" sm="8" md="4">
+        <div class="component login d-flex flex-column">
+          <v-card flat>
+            <div class="login-form-container d-flex flex-column align-center">
+              <div class="login-form">
+                <!--<Logo :width="346" /> -->
+                <span class="label-text">{{ $t('labels.user_id') }}</span>
 
-              <v-checkbox v-model="rememberMe" :label="$t('labels.remember_me')" />
-              <v-btn block color="primary" height="40px">
-                {{ $t('buttons.login') }}
-              </v-btn>
-              <v-row justify="center">
-                <v-col><v-divider class="login-divider" cols="4" /> </v-col>
-                <v-col cols="2"> <div class="divider-text">OR</div></v-col>
-                <v-col><v-divider class="login-divider" cols="4" /> </v-col>
-              </v-row>
-              <v-btn block color="primary" outlined class="login-button">
-                <v-icon size="medium" class="login-button-icon">mdi-facebook</v-icon>
-                <div class="login-button-label">{{ $t('buttons.login-facebook') }}</div>
-              </v-btn>
-              <v-btn block color="primary" outlined class="login-button">
-                <v-icon size="small" class="login-button-icon">mdi-google</v-icon>
-                <div class="login-button-label">{{ $t('buttons.login-google') }}</div>
-              </v-btn>
+                <v-text-field
+                  v-model="userId"
+                  :rules="[rules.required, rules.email]"
+                  maxlength="100"
+                  outlined
+                  height="36px"
+                />
+                <span class="label-text">{{ $t('labels.password') }}</span>
+                <v-text-field
+                  v-model="password"
+                  type="password"
+                  :rules="[rules.required, rules.password]"
+                  maxlength="16"
+                  outlined
+                  height="36px"
+                />
+                <v-btn block color="primary" height="40px" type="submit" :disabled="!valid" class="login-button">
+                  {{ $t('buttons.login') }}
+                </v-btn>
+                <v-row justify="center">
+                  <v-col><v-divider class="login-divider" cols="4" /> </v-col>
+                  <v-col cols="2"> <div class="divider-text">OR</div></v-col>
+                  <v-col><v-divider class="login-divider" cols="4" /> </v-col>
+                </v-row>
+                <v-btn block color="primary" outlined class="login-button">
+                  <v-icon size="medium" class="login-button-icon">mdi-facebook</v-icon>
+                  <div class="login-button-label">{{ $t('buttons.login-facebook') }}</div>
+                </v-btn>
+                <v-btn block color="primary" outlined class="login-button">
+                  <v-icon size="small" class="login-button-icon">mdi-google</v-icon>
+                  <div class="login-button-label">{{ $t('buttons.login-google') }}</div>
+                </v-btn>
+              </div>
             </div>
-          </div>
-        </v-card>
-        <!--
+          </v-card>
+          <!--
       <div class="copyright-container d-flex flex-column align-center">
         <Copyrights />
       </div>
-      --></div>
-    </v-col>
-  </v-row>
+      -->
+        </div>
+      </v-col>
+    </v-row>
+  </v-form>
 </template>
 
 <script lang="ts">
@@ -64,9 +69,40 @@ export default Vue.extend({
   data: () => ({
     userId: '',
     password: '',
-    rememberMe: false,
-    rules: [(value: any) => (value && value.length >= 8) || 'Must be 8~16 characters'],
+    valid: false,
   }),
+  methods: {
+    tryLogin(): void {
+      console.log('try login');
+      if (!(this.$refs.form as Vue & { validate: () => boolean }).validate()) {
+        return;
+      }
+
+      this.$rest
+        .get('/ui/v1/login', undefined, { auth: { username: this.userId, password: this.password } })
+        .then((data) => {
+          console.log('login ok' + this.userId);
+          window.localStorage.setItem('userId', this.userId);
+          this.$router.replace({ name: 'welcome' });
+        })
+        .catch((error) => {
+          console.log('api server err' + error);
+          throw error;
+        });
+    },
+  },
+  computed: {
+    rules() {
+      return {
+        required: (value: any) => !!value || this.$t('rules.required'),
+        email: (value: any) => {
+          const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          return pattern.test(value) || this.$t('rules.email');
+        },
+        password: (value: any) => (value && value.length >= 4) || this.$t('rules.password'),
+      };
+    },
+  },
 });
 </script>
 
@@ -88,24 +124,29 @@ export default Vue.extend({
       box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
       background-color: #ffffff;
 
+      .v-text-field .v-input__control .v-input__slot {
+        min-height: auto !important;
+        display: flex !important;
+        align-items: center !important;
+      }
+
       .logo {
         align-content: center;
         margin: 20px 0 56px;
       }
-      .login-title {
-        margin: 0;
-        margin-bottom: 32px;
-        font-size: 16px;
-        font-weight: 500;
-        color: $color-grey-900;
+
+      .label-text {
+        display: inline-block;
+        font-size: (13/14) * 1em;
       }
       .username,
       .password {
-        margin-bottom: 16px;
+        height: 36px;
       }
       .login-button {
         margin-top: 10px;
         height: 30px;
+        text-transform: none;
       }
       .login-divider {
         margin-top: 10px;
@@ -137,9 +178,6 @@ export default Vue.extend({
 <i18n>
 {
   "en": {
-    "title": {
-      "login": "Login to your account"
-    },
     "labels": {
       "user_id": "Email",
       "password": "Password",
@@ -149,12 +187,14 @@ export default Vue.extend({
       "login": "Login",
       "login-facebook": "Facebook",
       "login-google": "Google"
+    },
+    "rules": {
+      "required": "Required field",
+      "email": "Invalid e-mail",
+      "password": "Must be 8~16 characters"
     }
   },
   "ko": {
-    "title": {
-      "login": "계정에 로그인해 주십시오"
-    },
     "labels": {
       "user_id": "아이디",
       "password": "비밀번호",
@@ -168,6 +208,11 @@ export default Vue.extend({
       "login": "로그인",
       "login-facebook": "페이스북",
       "login-google": "구글"
+    },
+    "rules": {
+      "required": "입력이 필요한 필드입니다",
+      "email": "잘못된 e-mail 입니다",
+      "password": "8~16자를 입력하세요"
     }
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="component header">
     <v-app-bar app clipped-left flat>
       <HubLogo />
       <v-row class="ml-8" align="center" v-if="!loggined">
@@ -8,11 +8,18 @@
         </v-btn>
         <v-spacer></v-spacer>
 
-        <v-btn small class="mx-2" color="primary" outlined width="100px" :to="loginLink.login.to">{{
-          loginLink.login.label
-        }}</v-btn>
+        <v-btn
+          small
+          class="mx-2 login-button"
+          color="primary"
+          outlined
+          height="40px"
+          width="100px"
+          :to="loginLink.login.to"
+          >{{ loginLink.login.label }}</v-btn
+        >
 
-        <v-btn small class="mx-2" color="primary" width="100px" :to="loginLink.signUp.to">{{
+        <v-btn small class="mx-2 login-button" color="primary" height="40px" width="100px" :to="loginLink.signUp.to">{{
           loginLink.signUp.label
         }}</v-btn>
       </v-row>
@@ -63,7 +70,7 @@ export default {
         to: 'login',
       },
       signUp: {
-        label: 'Signup',
+        label: 'Sign up',
         to: 'signup',
       },
     },
@@ -75,6 +82,15 @@ export default {
 </script>
 <style lang="scss">
 @import '@/components/styles/variables.scss';
+.component.header {
+  .login-button {
+    height: 40px;
+    font-family: 'Montserrat';
+    font-size: 15px;
+    font-weight: 500;
+    text-transform: none;
+  }
+}
 .nav-btn-label {
   color: red;
 }
