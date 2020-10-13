@@ -2,11 +2,7 @@
   <v-navigation-drawer fixed app clipped permanent>
     <v-list-item-group>
       <v-list>
-        <v-list-item
-          v-for="item in menus"
-          :to="item.routeAttrs.to"
-          :key="item.title"
-        >
+        <v-list-item v-for="item in menus" :to="item.routeAttrs.to" :key="item.title">
           <v-list-item-action>
             <v-icon>mdi-cog</v-icon>
           </v-list-item-action>
@@ -52,39 +48,34 @@ export default Vue.extend({
         {
           id: 1,
           label: this.$t('menus.projects') as string,
-          routeAttrs: { to: { name: 'projects' } }
+          routeAttrs: { to: { name: 'projects' } },
         },
         {
           id: 2,
           label: this.$t('menus.activity') as string,
-          routeAttrs: { to: { name: 'activity' } }
+          routeAttrs: { to: { name: 'activity' } },
         },
         {
           id: 3,
-          label: this.$t('menus.billing') as string,
-          routeAttrs: { to: { name: 'billing' } }
+          label: this.$t('menus.document') as string,
+          routeAttrs: { to: { name: 'document' } },
         },
         {
           id: 4,
-          label: this.$t('menus.document') as string,
-          routeAttrs: { to: { name: 'document' } }
+          label: this.$t('menus.support') as string,
+          routeAttrs: { to: { name: 'support' } },
         },
         {
           id: 5,
-          label: this.$t('menus.support') as string,
-          routeAttrs: { to: { name: 'support' } }
-        },
-        {
-          id: 6,
           label: this.$t('menus.setting') as string,
-          routeAttrs: { to: { name: 'setting' } }
-        }
-      ] as SidebarItemProps[]
+          routeAttrs: { to: { name: 'setting' } },
+        },
+      ] as SidebarItemProps[],
     };
   },
   created() {
     this.$vuetify.theme.dark = false;
-  }
+  },
 });
 </script>
 
@@ -94,7 +85,6 @@ export default Vue.extend({
     "menus": {
         "projects" : "Projects",
         "activity" : "Activity",
-        "billing" : "Billing",
         "document" : "Document",
         "support" : "Support",
         "setting" : "Setting"

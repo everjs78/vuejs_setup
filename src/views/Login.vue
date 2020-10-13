@@ -84,7 +84,7 @@ export default Vue.extend({
           console.log('login ok: ' + data.access_token);
           window.localStorage.setItem('token', data.access_token);
           this.$rest.setDefaultAccessToken(data.access_token);
-          this.$router.replace({ name: 'project-main' });
+          this.$router.replace({ name: 'project' });
         })
         .catch((error) => {
           console.log('api server err' + error);

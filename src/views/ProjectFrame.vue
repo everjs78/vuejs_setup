@@ -31,6 +31,7 @@ export default {
   }),
   created() {
     this.$vuetify.theme.dark = false;
+    console.log('project frame created');
   },
 };
 </script>

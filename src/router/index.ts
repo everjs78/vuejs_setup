@@ -12,6 +12,18 @@ import Welcome from '../views/Welcome.vue';
 import Projects from '@/views/project/Projects.vue';
 import Activity from '@/views/project/Activity.vue';
 
+const requireAuth = () => (to: any, from: any, next: any) => {
+  const accessToken = window.localStorage.getItem('token');
+  const needAuth = !accessToken;
+  console.log('from:', from, ', to:', to, ', needAuth;', needAuth);
+  if (needAuth) {
+    console.log('need to login');
+    next('/login');
+  } else {
+    return next();
+  }
+};
+
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
@@ -59,41 +71,37 @@ const routes: Array<RouteConfig> = [
   {
     path: '/project',
     component: ProjectFrame,
+    beforeEnter: requireAuth(),
     children: [
       {
         path: '',
-        name: 'project-main',
-        component: Projects, // TODO replace Projects
+        name: 'project',
+        redirect: 'projects',
       },
       {
         path: 'projects',
         name: 'projects',
-        component: Projects, // TODO replace Projects
+        component: Projects,
       },
       {
         path: 'activity',
         name: 'activity',
-        component: Activity, // TODO replace Projects
+        component: Activity,
       },
       {
-        path: 'billing',
-        name: 'billing',
-        component: Activity, // TODO replace Projects
-      },
-      {
-        path: 'project-document',
+        path: 'document',
         name: 'project-document',
-        component: Activity, // TODO replace Projects
+        redirect: 'document',
       },
       {
-        path: 'project-support',
+        path: 'support',
         name: 'project-support',
-        component: Activity, // TODO replace Projects
+        redirect: 'support',
       },
       {
         path: 'setting',
         name: 'setting',
-        component: Activity, // TODO replace Projects
+        redirect: 'activity',
       },
     ],
   },
@@ -109,4 +117,14 @@ const router = new VueRouter({
   routes,
 });
 
+/*
+router.beforeEach((to, from, next) => {
+  const accessToken = window.localStorage.getItem('token');
+  if (accessToken || to.path === '/login') {
+    next();
+  } else {
+    next('/login');
+  }
+});
+*/
 export default router;

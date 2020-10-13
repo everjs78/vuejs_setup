@@ -35,11 +35,6 @@ export default Vue.extend({
   data() {
     return {
       projects: [],
-      /*[
-        { name: 'project1', desc: 'desc for project1' },
-        { name: 'project2', desc: 'desc for project2' },
-        { name: 'project3', desc: 'desc for project3' },
-      ],*/
       summary: {
         apps: [
           { count: 5, name: 'Applications' },
