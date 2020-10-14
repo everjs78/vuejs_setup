@@ -88,6 +88,8 @@ export default class RestClient {
   public setDefaultAccessToken(accessToken: string) {
     if (accessToken !== undefined) {
       this.myAxios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+    } else {
+      delete this.myAxios.defaults.headers.common['Authorization'];
     }
   }
 

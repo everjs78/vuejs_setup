@@ -55,18 +55,15 @@ export default Vue.extend({
   methods: {
     logout() {
       console.log('logout called');
-      /* this.$api
-        .logout()
+
+      this.$store
+        .dispatch('authLogout', { rest: this.$rest })
         .then(() => {
-          this.user = {
-            id: '',
-            name: '',
-          };
-          window.location.href = '/';
+          this.$router.push('login');
         })
         .catch((error) => {
           throw error;
-        }); */
+        });
     },
   },
 });

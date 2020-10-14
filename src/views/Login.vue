@@ -78,16 +78,14 @@ export default Vue.extend({
         return;
       }
 
-      this.$rest
-        .get('/ui/v1/login', undefined, { auth: { username: this.userId, password: this.password } })
-        .then((data) => {
-          console.log('login ok: ' + data.access_token);
-          window.localStorage.setItem('token', data.access_token);
-          this.$rest.setDefaultAccessToken(data.access_token);
+      this.$store
+        .dispatch('authRequest', { rest: this.$rest, auth: { username: this.userId, password: this.password } })
+        .then(() => {
+          console.log('login ok');
           this.$router.replace({ name: 'project' });
         })
         .catch((error) => {
-          console.log('api server err' + error);
+          console.log('login failed' + error);
           throw error;
         });
     },
