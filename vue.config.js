@@ -20,7 +20,7 @@ module.exports = {
   devServer: {
     proxy: {
       '/ui/v1': {
-        target: 'https://localhost:8000',
+        target: 'http://localhost:8000',
       },
     },
   },
