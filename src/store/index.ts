@@ -54,21 +54,18 @@ export default new Vuex.Store({
     },
     authLogout: ({ commit, dispatch }, payload) => {
       return new Promise((resolve, reject) => {
-        /*
         payload.rest
           .delete('/ui/v1/logout')
           .then((data: any) => {
-            */
-        commit('authLogout');
-        window.localStorage.removeItem('token'); // clear your user's token from localstorage
-        payload.rest.setDefaultAccessToken();
-        resolve();
-        /*
+            commit('authLogout');
+            window.localStorage.removeItem('token'); // clear your user's token from localstorage
+            payload.rest.setDefaultAccessToken();
+            resolve();
           })
           .catch((error: any) => {
             commit('authError', error);
             reject(error);
-          });*/
+          });
       });
     },
   },
