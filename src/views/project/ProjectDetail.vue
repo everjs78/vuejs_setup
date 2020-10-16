@@ -20,10 +20,10 @@
         <v-row
           ><v-col>
             <v-tabs v-model="tab" background-color="transparent" grow>
-              <v-tab>
+              <v-tab class="tabs">
                 Apps
               </v-tab>
-              <v-tab>
+              <v-tab class="tabs">
                 Activity
               </v-tab>
             </v-tabs>
@@ -87,6 +87,11 @@ export default Vue.extend({
   }
   .project-name {
     font-size: 28px;
+  }
+  .tabs {
+    font-size: 22px;
+    font-weight: 500;
+    text-transform: none;
   }
 }
 .command-box {
