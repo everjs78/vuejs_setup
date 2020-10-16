@@ -7,7 +7,7 @@
         </v-row>
         <v-row v-for="app in apps" :key="app.name">
           <v-col class="app-card" cols="12">
-            <AppCard :app="app" @click="goApp(app.name)" />
+            <AppCard :app="app" />
           </v-col>
         </v-row>
       </v-col>
