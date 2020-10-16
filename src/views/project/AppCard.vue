@@ -1,20 +1,19 @@
 <template>
-  <v-card>
-    <v-card-title>{{ item.name }}</v-card-title>
-    <v-card-text>{{ item.desc }}</v-card-text>
+  <v-card v-on="$listeners" tile>
+    <v-card-title>{{ app.name }}</v-card-title>
   </v-card>
 </template>
 
-<script>
+<script lang="ts">
 import Vue from 'vue';
 
 export default Vue.extend({
-  name: 'Project',
+  name: 'AppCard',
   created() {
     this.$vuetify.theme.dark = false;
   },
   props: {
-    item: Object,
+    app: Object,
   },
 });
 </script>

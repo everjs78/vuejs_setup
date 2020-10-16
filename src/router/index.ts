@@ -10,6 +10,7 @@ import Login from '../views/Login.vue';
 import SignUp from '../views/SignUp.vue';
 import Welcome from '../views/Welcome.vue';
 import Projects from '@/views/project/Projects.vue';
+import ProjectDetail from '@/views/project/ProjectDetail.vue';
 import Activity from '@/views/project/Activity.vue';
 
 const requireAuth = () => (to: any, from: any, next: any) => {
@@ -75,13 +76,18 @@ const routes: Array<RouteConfig> = [
     children: [
       {
         path: '',
-        name: 'project',
+        name: 'projects-main',
         redirect: 'projects',
       },
       {
         path: 'projects',
         name: 'projects',
         component: Projects,
+      },
+      {
+        path: ':name',
+        name: 'project-detail',
+        component: ProjectDetail,
       },
       {
         path: 'activity',

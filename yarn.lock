@@ -3445,6 +3445,13 @@ decompress-response@^4.2.0:
   dependencies:
     mimic-response "^2.0.0"
 
+decompress-response@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/decompress-response/-/decompress-response-6.0.0.tgz#ca387612ddb7e104bd16d85aab00d5ecf09c66fc"
+  integrity sha512-aW35yZM6Bb/4oJlZncMH2LCoZtJXTRxES17vE3hoRiowU2kWHaJKFkSBDnDR+cm9J+9QhXmREyIfv0pji9ejCQ==
+  dependencies:
+    mimic-response "^3.1.0"
+
 deep-equal@^1.0.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/deep-equal/-/deep-equal-1.1.1.tgz#b5c98c942ceffaf7cb051e24e1434a25a2e6076a"
@@ -6231,6 +6238,11 @@ mimic-response@^2.0.0:
   resolved "https://registry.yarnpkg.com/mimic-response/-/mimic-response-2.1.0.tgz#d13763d35f613d09ec37ebb30bac0469c0ee8f43"
   integrity sha512-wXqjST+SLt7R009ySCglWBCFpjUygmCIfD790/kVbiGmUgfYGuB14PiTd5DwVxSV4NcYHjzMkoj5LjQZwTQLEA==
 
+mimic-response@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/mimic-response/-/mimic-response-3.1.0.tgz#2d1d59af9c1b129815accc2c46a022a5ce1fa3c9"
+  integrity sha512-z0yWI+4FDrrweS8Zmt4Ej5HdJmky15+L2e6Wgn3+iK5fWzb6T3fhNFq2+MeTRb064c6Wr4N/wv0DzQTjNzHNGQ==
+
 min-document@^2.19.0:
   version "2.19.0"
   resolved "https://registry.yarnpkg.com/min-document/-/min-document-2.19.0.tgz#7bd282e3f5842ed295bb748cdd9f1ffa2c824685"
@@ -6468,6 +6480,11 @@ node-abi@^2.7.0:
   integrity sha512-yi05ZoiuNNEbyT/xXfSySZE+yVnQW6fxPZuFbLyS1s6b5Kw3HzV2PHOM4XR+nsjzkHxByK+2Wg+yCQbe35l8dw==
   dependencies:
     semver "^5.4.1"
+
+node-addon-api@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/node-addon-api/-/node-addon-api-3.0.2.tgz#04bc7b83fd845ba785bb6eae25bc857e1ef75681"
+  integrity sha512-+D4s2HCnxPd5PjjI0STKwncjXTUKKqm74MDMz9OPXavjsGmjkvwgLtA5yoxJUdmpj52+2u+RrXgPipahKczMKg==
 
 node-forge@0.9.0:
   version "0.9.0"
@@ -7571,7 +7588,7 @@ postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.14, postcss@^7.0.16, postcss@^7.0.2
     source-map "^0.6.1"
     supports-color "^6.1.0"
 
-prebuild-install@^5.3.3:
+prebuild-install@^5.3.3, prebuild-install@^5.3.5:
   version "5.3.5"
   resolved "https://registry.yarnpkg.com/prebuild-install/-/prebuild-install-5.3.5.tgz#e7e71e425298785ea9d22d4f958dbaccf8bb0e1b"
   integrity sha512-YmMO7dph9CYKi5IR/BzjOJlRzpxGGVo1EsLSUZ0mt/Mq0HWZIHOKHHcHdT69yG54C9m6i45GpItwRHpk0Py7Uw==
@@ -8413,6 +8430,21 @@ sharp@^0.23.3:
     tar "^5.0.5"
     tunnel-agent "^0.6.0"
 
+sharp@^0.26.2:
+  version "0.26.2"
+  resolved "https://registry.yarnpkg.com/sharp/-/sharp-0.26.2.tgz#3d5777d246ae32890afe82a783c1cbb98456a88c"
+  integrity sha512-bGBPCxRAvdK9bX5HokqEYma4j/Q5+w8Nrmb2/sfgQCLEUx/HblcpmOfp59obL3+knIKnOhyKmDb4tEOhvFlp6Q==
+  dependencies:
+    color "^3.1.2"
+    detect-libc "^1.0.3"
+    node-addon-api "^3.0.2"
+    npmlog "^4.1.2"
+    prebuild-install "^5.3.5"
+    semver "^7.3.2"
+    simple-get "^4.0.0"
+    tar-fs "^2.1.0"
+    tunnel-agent "^0.6.0"
+
 shebang-command@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/shebang-command/-/shebang-command-1.2.0.tgz#44aac65b695b03398968c39f363fee5deafdf1ea"
@@ -8467,6 +8499,15 @@ simple-get@^3.0.3, simple-get@^3.1.0:
   integrity sha512-bCR6cP+aTdScaQCnQKbPKtJOKDp/hj9EDLJo3Nw4y1QksqaovlW/bnptB6/c1e+qmNIDHRK+oXFDdEqBT8WzUA==
   dependencies:
     decompress-response "^4.2.0"
+    once "^1.3.1"
+    simple-concat "^1.0.0"
+
+simple-get@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/simple-get/-/simple-get-4.0.0.tgz#73fa628278d21de83dadd5512d2cc1f4872bd675"
+  integrity sha512-ZalZGexYr3TA0SwySsr5HlgOOinS4Jsa8YB2GJ6lUNAazyAu4KG/VmzMTwAt2YVXzzVj8QmefmAonZIK2BSGcQ==
+  dependencies:
+    decompress-response "^6.0.0"
     once "^1.3.1"
     simple-concat "^1.0.0"
 
@@ -8981,7 +9022,7 @@ tapable@^1.0.0, tapable@^1.1.3:
   resolved "https://registry.yarnpkg.com/tapable/-/tapable-1.1.3.tgz#a1fccc06b58db61fd7a45da2da44f5f3a3e67ba2"
   integrity sha512-4WK/bYZmj8xLr+HUCODHGF1ZFzsYffasLUgEiMBY4fgtltdO6B4WJtlSbPaDTLpYTcGVwM2qLnFTICEcNxs3kA==
 
-tar-fs@^2.0.0:
+tar-fs@^2.0.0, tar-fs@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/tar-fs/-/tar-fs-2.1.0.tgz#d1cdd121ab465ee0eb9ccde2d35049d3f3daf0d5"
   integrity sha512-9uW5iDvrIMCVpvasdFHW0wJPez0K4JnMZtsuIeDI7HyMGJNxmDZDOCQROr7lXyS+iL/QMpj07qcjGYTSdRFXUg==
@@ -9705,10 +9746,10 @@ vuetify-loader@^1.3.0:
     file-loader "^4.0.0"
     loader-utils "^1.2.0"
 
-vuetify@^2.3.2:
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-2.3.2.tgz#b06f6ffff4fe04e3dd41c9c1fc484df5e8a16ead"
-  integrity sha512-LgTuUN9IBrR47rLC5NnoameawjV1+KM2KqgZh3lammYKx6yA/AFysHcvXdkfro5vNXxnybKQOuHOsRJ8+e52mA==
+vuetify@2.3.14:
+  version "2.3.14"
+  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-2.3.14.tgz#42a864b8f28b67775758a5e5e42fc50733f1bdbe"
+  integrity sha512-1Ys1MreJQOL/Ddp3YotBi1SlC2+1A0/RVkDXX3Azspt8incPdAnNB0JyChHiJ/TM+L+KSA7T4EXF9YDrCWENmg==
 
 vuex@^3.4.0:
   version "3.4.0"

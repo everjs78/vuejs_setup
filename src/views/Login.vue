@@ -82,7 +82,7 @@ export default Vue.extend({
         .dispatch('authRequest', { rest: this.$rest, auth: { username: this.userId, password: this.password } })
         .then(() => {
           console.log('login ok');
-          this.$router.replace({ name: 'project' });
+          this.$router.replace({ name: 'projects-main' });
         })
         .catch((error) => {
           console.log('login failed' + error);

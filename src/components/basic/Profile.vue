@@ -7,7 +7,7 @@
     </template>
 
     <v-list dense nav>
-      <v-list-item @click="$router.push({ name: 'project-main' })">
+      <v-list-item @click="$router.push({ name: 'projects-main' })">
         <v-list-item-icon>
           <v-icon>mdi-view-dashboard</v-icon>
         </v-list-item-icon>
