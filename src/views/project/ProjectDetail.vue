@@ -2,47 +2,47 @@
   <div>
     <v-container class="project-detail" fluid>
       <v-card flat>
-        <v-card-title>
-          <v-row class="justify-space-between">
-            <v-col>
-              <v-btn icon>
-                <v-icon color="green">mdi-checkbox-blank-circle</v-icon>
-              </v-btn>
-              {{ $route.params.name }}
-            </v-col>
-            <v-col class="command-box">
-              <v-btn icon>
-                <v-icon>mdi-square-edit-outline</v-icon>
-              </v-btn>
-              <v-btn icon>
-                <v-icon>mdi-delete-outline</v-icon>
-              </v-btn>
-            </v-col>
-          </v-row>
-        </v-card-title>
+        <v-row align="center" justify="space-between">
+          <v-col>
+            <v-icon size="21px" color="green" class="status">mdi-checkbox-blank-circle</v-icon>
+            <span class="project-name"> {{ $route.params.name }} </span>
+          </v-col>
+          <v-col class="command-box">
+            <v-btn icon>
+              <v-icon>mdi-square-edit-outline</v-icon>
+            </v-btn>
+            <v-btn icon>
+              <v-icon>mdi-delete-outline</v-icon>
+            </v-btn>
+          </v-col>
+        </v-row>
 
-        <v-tabs v-model="tab" background-color="transparent" grow>
-          <v-tab>
-            Apps
-          </v-tab>
-          <v-tab>
-            Activity
-          </v-tab>
-        </v-tabs>
+        <v-row
+          ><v-col>
+            <v-tabs v-model="tab" background-color="transparent" grow>
+              <v-tab>
+                Apps
+              </v-tab>
+              <v-tab>
+                Activity
+              </v-tab>
+            </v-tabs>
 
-        <v-tabs-items v-model="tab">
-          <v-tab-item>
-            <v-card flat>
-              <Apps :projectName="projectName" />
-            </v-card>
-          </v-tab-item>
-          <v-tab-item>
-            <v-card flat>
-              activity
-              <!---<Activity :projectName="projectName" /> -->
-            </v-card>
-          </v-tab-item>
-        </v-tabs-items>
+            <v-tabs-items v-model="tab">
+              <v-tab-item>
+                <v-card flat>
+                  <Apps :projectName="projectName" />
+                </v-card>
+              </v-tab-item>
+              <v-tab-item>
+                <v-card flat>
+                  activity
+                  <!---<Activity :projectName="projectName" /> -->
+                </v-card>
+              </v-tab-item>
+            </v-tabs-items>
+          </v-col></v-row
+        >
       </v-card>
     </v-container>
   </div>
@@ -82,6 +82,12 @@ export default Vue.extend({
 <style lang="scss">
 .project-detail {
   max-width: 700px;
+  .status {
+    padding-bottom: 7px;
+  }
+  .project-name {
+    font-size: 28px;
+  }
 }
 .command-box {
   max-width: 100px;
