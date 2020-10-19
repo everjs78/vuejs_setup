@@ -16,7 +16,7 @@
       </v-col>
       <v-col class="col-command" cols="3">
         <span class="running"> {{ runningStatus }} </span>
-        <CommandMenu editable deletable />
+        <CommandMenu deletable />
       </v-col>
     </v-row>
   </v-card>

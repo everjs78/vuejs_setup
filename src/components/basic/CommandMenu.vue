@@ -6,9 +6,10 @@
       </v-btn>
     </template>
     <v-list dense>
+      <!--
       <v-list-item v-if="editable" @click="handleEdit()">
         <v-list-item-title>{{ $t('menus.edit') }}</v-list-item-title>
-      </v-list-item>
+      </v-list-item>-->
       <v-list-item v-if="deletable" @click="handleDelete()">
         <v-list-item-title>{{ $t('menus.delete') }}</v-list-item-title>
       </v-list-item>
@@ -21,6 +22,7 @@ import Vue from 'vue';
 
 export default Vue.extend({
   name: 'CommandMenu',
+  components: {},
   props: {
     app: Object,
     editable: {
@@ -43,12 +45,7 @@ export default Vue.extend({
 });
 </script>
 
-<style lang="scss" scoped>
-.v-list-item--dense,
-.v-list--dense .v-list-item {
-  min-height: 25px;
-}
-</style>
+<style lang="scss"></style>
 
 <i18n>
 {
