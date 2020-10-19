@@ -50,6 +50,14 @@
 <script lang="ts">
 import Vue from 'vue';
 
+export type VConfirmOpen = Vue & {
+  open: (title: string, message: string, options: any) => Promise<boolean>;
+};
+
+export type VueConfirm = Vue & {
+  $confirm: any;
+};
+
 export default Vue.extend({
   name: 'Confirm',
   data: () => ({
@@ -65,11 +73,13 @@ export default Vue.extend({
     },
   }),
   methods: {
-    open(title: string, message: string, options: any) {
+    open(title: string, message: string, options?: any) {
       this.dialog = true;
       this.title = title;
       this.message = message;
-      this.options = Object.assign(this.options, options);
+      if (options !== undefined) {
+        this.options = Object.assign(this.options, options);
+      }
       return new Promise((resolve: any, reject: any) => {
         this.resolve = resolve;
         this.reject = reject;

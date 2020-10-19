@@ -11,7 +11,7 @@
             <v-btn icon>
               <v-icon>mdi-square-edit-outline</v-icon>
             </v-btn>
-            <v-btn icon>
+            <v-btn icon @click="openDelete">
               <v-icon>mdi-delete-outline</v-icon>
             </v-btn>
           </v-col>
@@ -51,6 +51,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import Apps from './Apps.vue';
+import Confirm, { VueConfirm } from '@/components/basic/Confirm.vue';
 
 export default Vue.extend({
   name: 'ProjectDetail',
@@ -74,6 +75,14 @@ export default Vue.extend({
   computed: {
     projectName(): string {
       return this.$route.params.name;
+    },
+  },
+  methods: {
+    openDelete() {
+      console.log('delete confirm');
+      (this.$root as VueConfirm).$confirm('Delete', 'Are you sure?').then((confirm: boolean) => {
+        console.log('onBeforeDeleteItem confirm : ' + confirm);
+      });
     },
   },
 });

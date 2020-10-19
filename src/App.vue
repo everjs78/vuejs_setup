@@ -9,15 +9,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import Confirm from '@/components/basic/Confirm.vue';
-
-type VConfirm = Vue & {
-  open: (title: string, message: string, options: any) => Promise<boolean>;
-};
-
-type XVue = Vue & {
-  $confirm: any;
-};
+import Confirm, { VueConfirm, VConfirmOpen } from '@/components/basic/Confirm.vue';
 
 export default Vue.extend({
   name: 'App',
@@ -28,8 +20,8 @@ export default Vue.extend({
     console.log('App created');
   },
   mounted() {
-    const confirm = this.$refs.confirm as VConfirm;
-    (this.$root as XVue).$confirm = confirm.open;
+    const confirm = this.$refs.confirm as VConfirmOpen;
+    (this.$root as VueConfirm).$confirm = confirm.open;
   },
 });
 </script>
