@@ -9,11 +9,13 @@
       class="confirm-dialog"
     >
       <v-card height="355px">
-        <v-card-title color="white" class="c-title" dense flat>
-          {{ title }}
-        </v-card-title>
-        <v-card-text v-show="!!message">
-          <v-row class="message pt-6" align="center">
+        <v-responsive height="55px" class="title pa-2">
+          <v-card-title color="white" dense flat>
+            {{ title }}
+          </v-card-title>
+        </v-responsive>
+        <v-responsive height="240px" class="pt-2 px-10">
+          <v-row class="message" align="center">
             <v-col cols="1">
               <v-icon color="red" size="40px" class="alert-icon"> mdi-alert-circle-outline </v-icon>
             </v-col>
@@ -21,22 +23,25 @@
               {{ message }}
             </v-col>
           </v-row>
-          <v-row align="center">
+          <v-row align="center" class="pt-10">
             <v-col cols="12">
               <span class="label-name">{{ $t('label.name') }}</span>
               <v-text-field height="36px" v-model="name" solo clearable></v-text-field>
             </v-col>
           </v-row>
-        </v-card-text>
-        <v-divider class="login-divider" />
-
-        <div class="actions">
-          <v-card-actions class="pt-4">
-            <v-spacer></v-spacer>
-            <v-btn outlined text @click.native="cancel">Close</v-btn>
-            <v-btn color="red" outlined text @click.native="agree">Delete</v-btn>
-          </v-card-actions>
-        </div>
+        </v-responsive>
+        <v-responsive height="60px">
+          <v-divider />
+          <v-row class="pt-3 pr-8" align="center" justify="space-around" no-gutters>
+            <v-col cols="8"> <v-spacer /> </v-col>
+            <v-col>
+              <v-btn outlined text @click.native="cancel">Close</v-btn>
+            </v-col>
+            <v-col>
+              <v-btn color="red" outlined text @click.native="agree">Delete</v-btn>
+            </v-col>
+          </v-row>
+        </v-responsive>
       </v-card>
     </v-dialog>
   </v-form>
@@ -94,15 +99,11 @@ export default Vue.extend({
 
 <style lang="scss">
 .confirm-dialog {
-  /*
   .title {
-    height: 33px;
-
-    font-family: 'Montserrat';
-    font-size: 15px;
-    font-weight: 500;
-    text-transform: none;
-  }*/
+    padding-top: 10px;
+  }
+  .body {
+  }
   .message {
     height: 82px;
   }
@@ -115,6 +116,17 @@ export default Vue.extend({
 }
 </style>
 <style lang="scss" scoped>
+.v-card__title {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 33px;
+  font-weight: 500;
+  letter-spacing: 0.0125em;
+  line-height: 2rem;
+  word-break: break-all;
+}
+
 .v-dialog > .v-card > .v-card__title {
   font-size: 33px;
   font-weight: 500;
