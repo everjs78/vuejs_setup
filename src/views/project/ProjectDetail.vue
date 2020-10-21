@@ -8,9 +8,6 @@
             <span class="project-name"> {{ $route.params.name }} </span>
           </v-col>
           <v-col class="command-box">
-            <v-btn icon>
-              <v-icon>mdi-square-edit-outline</v-icon>
-            </v-btn>
             <v-btn icon @click="openDelete">
               <v-icon>mdi-delete-outline</v-icon>
             </v-btn>
@@ -41,8 +38,8 @@
                 </v-card>
               </v-tab-item>
             </v-tabs-items>
-          </v-col></v-row
-        >
+          </v-col>
+        </v-row>
       </v-card>
     </v-container>
   </div>
@@ -80,9 +77,24 @@ export default Vue.extend({
   methods: {
     openDelete() {
       console.log('delete confirm');
-      (this.$root as VueConfirm).$confirm('Delete', 'Are you sure?').then((confirm: boolean) => {
-        console.log('onBeforeDeleteItem confirm : ' + confirm);
-      });
+      (this.$root as VueConfirm)
+        .$confirm(
+          'Delete',
+          'If you erase it, it cannot be reversed. I hope you are careful. Enter project name to delete',
+        )
+        .then((confirm: boolean) => {
+          console.log('onBeforeDeleteItem confirm : ' + confirm);
+          if (confirm) {
+            this.$rest
+              .delete(`/ui/v1/projects/${this.projectName}`)
+              .then(() => {
+                console.log(`delete project ${this.projectName}`);
+              })
+              .catch((error: any) => {
+                console.log(`error to delete project ${this.projectName}`);
+              });
+          }
+        });
     },
   },
 });

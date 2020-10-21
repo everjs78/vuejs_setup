@@ -1,52 +1,46 @@
 <template>
-  <v-dialog v-model="dialog" :max-width="options.width" :style="{ zIndex: options.zIndex }" @keydown.esc="cancel">
-    <v-card>
-      <v-toolbar dark :color="options.color" dense flat>
-        <v-toolbar-title class="white--text">{{ title }}</v-toolbar-title>
-      </v-toolbar>
-      <v-card-text v-show="!!message" class="pa-4">{{ message }}</v-card-text>
-      <v-card-actions class="pt-0">
-        <v-spacer></v-spacer>
-        <v-btn color="primary darken-1" text @click.native="agree">Yes</v-btn>
-        <v-btn color="grey" text @click.native="cancel">Cancel</v-btn>
-      </v-card-actions>
-    </v-card>
-  </v-dialog>
-</template>
-<!--<template>
-  <v-row justify="center">
-    <v-dialog v-model="dialog" persistent max-width="600px">
-      <v-card>
-        <v-card-title>
-          <span class="headline">User Profile</span>
+  <v-form>
+    <v-dialog
+      v-model="dialog"
+      max-width="600px"
+      max-height="355px"
+      :style="{ zIndex: options.zIndex }"
+      @keydown.esc="cancel"
+      class="confirm-dialog"
+    >
+      <v-card height="355px">
+        <v-card-title color="white" class="c-title" dense flat>
+          {{ title }}
         </v-card-title>
-        <v-card-text>
-          <v-container>
-            <v-row>
-              <v-col cols="12">
-                <v-text-field label="Email*" required></v-text-field>
-              </v-col>
-              <v-col cols="12">
-                <v-text-field label="Password*" type="password" required></v-text-field>
-              </v-col>
-            </v-row>
-          </v-container>
-          <small>*indicates required field</small>
+        <v-card-text v-show="!!message">
+          <v-row class="message pt-6" align="center">
+            <v-col cols="1">
+              <v-icon color="red" size="40px" class="alert-icon"> mdi-alert-circle-outline </v-icon>
+            </v-col>
+            <v-col cols="10">
+              {{ message }}
+            </v-col>
+          </v-row>
+          <v-row align="center">
+            <v-col cols="12">
+              <span class="label-name">{{ $t('label.name') }}</span>
+              <v-text-field height="36px" v-model="name" solo clearable></v-text-field>
+            </v-col>
+          </v-row>
         </v-card-text>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="blue darken-1" text @click="dialog = false">
-            Close
-          </v-btn>
-          <v-btn color="blue darken-1" text @click="handleDelete">
-            Delete
-          </v-btn>
-        </v-card-actions>
+        <v-divider class="login-divider" />
+
+        <div class="actions">
+          <v-card-actions class="pt-4">
+            <v-spacer></v-spacer>
+            <v-btn outlined text @click.native="cancel">Close</v-btn>
+            <v-btn color="red" outlined text @click.native="agree">Delete</v-btn>
+          </v-card-actions>
+        </div>
       </v-card>
     </v-dialog>
-  </v-row>
+  </v-form>
 </template>
--->
 <script lang="ts">
 import Vue from 'vue';
 
@@ -61,6 +55,7 @@ export type VueConfirm = Vue & {
 export default Vue.extend({
   name: 'Confirm',
   data: () => ({
+    name: '',
     dialog: false,
     resolve: (result: boolean) => {},
     reject: (result: boolean) => {},
@@ -96,3 +91,62 @@ export default Vue.extend({
   },
 });
 </script>
+
+<style lang="scss">
+.confirm-dialog {
+  /*
+  .title {
+    height: 33px;
+
+    font-family: 'Montserrat';
+    font-size: 15px;
+    font-weight: 500;
+    text-transform: none;
+  }*/
+  .message {
+    height: 82px;
+  }
+  .alert-icon {
+    height: 40px;
+  }
+  .actions {
+    padding-top: 0px;
+  }
+}
+</style>
+<style lang="scss" scoped>
+.v-dialog > .v-card > .v-card__title {
+  font-size: 33px;
+  font-weight: 500;
+  letter-spacing: 0.0125em;
+  padding: 24px 25px 10px 25px;
+}
+.theme--light.v-card > .v-card__text,
+.theme--light.v-card .v-card__subtitle {
+  color: red($color: #000000);
+}
+.v-card__subtitle,
+.v-card__text {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.375rem;
+  letter-spacing: 0.0071428571em;
+}
+.v-dialog > .v-card > .v-card__text {
+  padding: 0 24px 0px;
+}
+.v-text-field.v-text-field--solo .v-input__control {
+  min-height: 36px;
+  padding: 0;
+}
+</style>
+
+<i18n>
+{
+  "en": {
+    "label" : {
+      "name": "project name"
+    }
+  }
+}
+</i18n>
