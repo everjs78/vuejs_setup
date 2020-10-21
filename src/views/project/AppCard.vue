@@ -1,7 +1,7 @@
 <template>
   <v-card v-on="$listeners" class="app-card">
     <v-row justify="space-between" align="center" no-gutters>
-      <v-col class="col-name" cols="3">
+      <v-col class="col-name" cols="9">
         <v-row>
           <v-col>
             <v-icon size="3" class="status" color="green">mdi-checkbox-blank-circle</v-icon>
