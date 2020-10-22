@@ -1,25 +1,27 @@
 <template>
-  <v-card v-on="$listeners" class="app-card">
-    <v-row justify="space-between" align="center" no-gutters>
-      <v-col class="col-name" cols="9">
-        <v-row>
-          <v-col>
-            <v-icon size="3" class="status" color="green">mdi-checkbox-blank-circle</v-icon>
-            <span class="name">{{ app.name }}</span>
-          </v-col>
-        </v-row>
-        <v-row>
-          <v-col>
-            <span class="desc">{{ app.name }} </span>
-          </v-col>
-        </v-row>
-      </v-col>
-      <v-col class="col-command" cols="3">
-        <span class="running"> {{ runningStatus }} </span>
-        <CommandMenu deletable />
-      </v-col>
-    </v-row>
-  </v-card>
+  <v-hover v-slot:default="{ hover }">
+    <v-card v-on="$listeners" class="app-card" :elevation="hover ? 16 : 0" @click.prevent="goApp">
+      <v-row justify="space-between" align="center" no-gutters>
+        <v-col class="col-name" cols="9">
+          <v-row>
+            <v-col>
+              <v-icon size="3" class="status" color="green">mdi-checkbox-blank-circle</v-icon>
+              <span class="name">{{ app.name }}</span>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col>
+              <span class="desc">{{ app.name }} </span>
+            </v-col>
+          </v-row>
+        </v-col>
+        <v-col class="col-command" cols="3">
+          <span class="running"> {{ runningStatus }} </span>
+          <CommandMenu deletable />
+        </v-col>
+      </v-row>
+    </v-card>
+  </v-hover>
 </template>
 
 <script lang="ts">
@@ -40,6 +42,12 @@ export default Vue.extend({
   computed: {
     runningStatus(): string {
       return `${this.app.running_replicas} of ${this.app.replicas} instances`;
+    },
+  },
+  methods: {
+    goApp() {
+      console.log('go app', this.app.name);
+      this.$router.push({ name: 'app-detail', params: { name: this.app.name } });
     },
   },
 });

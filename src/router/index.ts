@@ -90,6 +90,11 @@ const routes: Array<RouteConfig> = [
         component: ProjectDetail,
       },
       {
+        path: ':name',
+        name: 'app-detail',
+        component: ProjectDetail,
+      },
+      {
         path: 'activity',
         name: 'activity',
         component: Activity,
