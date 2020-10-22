@@ -7,7 +7,7 @@
         </v-row>
         <v-row v-for="app in section.apps" :key="app.name">
           <v-col class="app-card" cols="12">
-            <AppCard :app="app" />
+            <AppCard :app="app" :projectName="projectName" />
           </v-col>
         </v-row>
       </v-col>
@@ -58,10 +58,6 @@ export default Vue.extend({
         this.appSections[1].apps = data.apps['workers'];
         this.appSections[2].apps = data.apps['manages-apps'];
       }
-    },
-    goApp(appName: string) {
-      console.log('go app detail', appName);
-      this.$router.push({ name: 'app-detail', params: { appName } });
     },
   },
 });

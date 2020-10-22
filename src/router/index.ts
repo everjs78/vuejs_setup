@@ -12,6 +12,7 @@ import Welcome from '../views/Welcome.vue';
 import Projects from '@/views/project/Projects.vue';
 import ProjectDetail from '@/views/project/ProjectDetail.vue';
 import Activity from '@/views/project/Activity.vue';
+import EmptyFrame from '@/views/project/EmptyFrame.vue';
 
 const requireAuth = () => (to: any, from: any, next: any) => {
   const accessToken = window.localStorage.getItem('token');
@@ -90,9 +91,9 @@ const routes: Array<RouteConfig> = [
         component: ProjectDetail,
       },
       {
-        path: ':name',
+        path: ':projname/apps/:appname',
         name: 'app-detail',
-        component: ProjectDetail,
+        component: Activity,
       },
       {
         path: 'activity',

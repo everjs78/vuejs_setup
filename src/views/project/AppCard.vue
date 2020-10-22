@@ -17,7 +17,7 @@
         </v-col>
         <v-col class="col-command" cols="3">
           <span class="running"> {{ runningStatus }} </span>
-          <CommandMenu deletable />
+          <CommandMenu deletable :target="app.name" :onDelete="deleteApp" />
         </v-col>
       </v-row>
     </v-card>
@@ -27,6 +27,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import CommandMenu from '@/components/basic/CommandMenu.vue';
+import Confirm, { VueConfirm } from '@/components/basic/Confirm.vue';
 
 export default Vue.extend({
   name: 'AppCard',
@@ -38,6 +39,7 @@ export default Vue.extend({
   },
   props: {
     app: Object,
+    projectName: String,
   },
   computed: {
     runningStatus(): string {
@@ -47,7 +49,37 @@ export default Vue.extend({
   methods: {
     goApp() {
       console.log('go app', this.app.name);
-      this.$router.push({ name: 'app-detail', params: { name: this.app.name } });
+      this.$router.push({ name: 'app-detail', params: { projname: this.projectName, appname: this.app.name } });
+    },
+    deleteApp() {
+      console.log(`delete app ${this.app.name}`);
+
+      (this.$root as VueConfirm)
+        .$confirm(
+          'Delete App',
+          'If you erase it, it cannot be reversed. I hope you are careful. Enter application name to delete',
+          {
+            label: 'app name',
+            checkFn: (name: string) => name == this.app.name,
+          },
+        )
+        .then((confirm: boolean) => {
+          console.log('onBeforeDeleteItem confirm : ' + confirm);
+          if (confirm) {
+            console.log(`delete application /ui/v1/projects/${this.projectName}/apps/${this.app.name}`);
+
+            /*
+            this.$rest
+              .delete(`/ui/v1/projects/${this.projectName}/apps/${this.app.name}`)
+              .then(() => {
+                console.log(`delete app ${this.app.name}`);
+              })
+              .catch((error: any) => {
+                console.log(`error to delete app ${this.app.name}`);
+              });
+              */
+          }
+        });
     },
   },
 });

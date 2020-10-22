@@ -79,9 +79,10 @@ export default Vue.extend({
       console.log('delete confirm');
       (this.$root as VueConfirm)
         .$confirm(
-          'Delete',
+          'Delete Project',
           'If you erase it, it cannot be reversed. I hope you are careful. Enter project name to delete',
           {
+            label: 'project name',
             checkFn: (name: string) => name == this.projectName,
           },
         )

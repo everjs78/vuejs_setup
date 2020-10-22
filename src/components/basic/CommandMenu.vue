@@ -33,13 +33,17 @@ export default Vue.extend({
       type: Boolean,
       default: true,
     },
+    onDelete: Function,
   },
   methods: {
     handleEdit() {
       console.log('edit');
     },
     handleDelete() {
-      console.log('delete');
+      console.log('call on delete');
+      if (this.onDelete !== undefined && typeof this.onDelete === 'function') {
+        this.onDelete();
+      }
     },
   },
 });

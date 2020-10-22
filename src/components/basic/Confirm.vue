@@ -18,7 +18,7 @@
           </v-row>
           <v-row align="center" class="pt-10">
             <v-col cols="12">
-              <span class="label-name">{{ $t('label.name') }}</span>
+              <span class="label-name">{{ options.label }}</span>
               <v-text-field height="36px" v-model="name" solo clearable></v-text-field>
             </v-col>
           </v-row>
@@ -60,6 +60,7 @@ export default Vue.extend({
     message: '',
     title: '',
     options: {
+      label: '',
       checkFn: {},
     },
   }),
@@ -148,6 +149,11 @@ export default Vue.extend({
 .v-text-field.v-text-field--solo .v-input__control {
   min-height: 36px;
   padding: 0;
+}
+.col-10 {
+  flex: 0 0 83.3333333333%;
+  max-width: 83.3333333333%;
+  color: red;
 }
 </style>
 
