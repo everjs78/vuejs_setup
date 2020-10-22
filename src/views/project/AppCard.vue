@@ -1,6 +1,6 @@
 <template>
   <v-hover v-slot:default="{ hover }">
-    <v-card v-on="$listeners" class="app-card" :elevation="hover ? 16 : 0" @click.prevent="goApp">
+    <v-card v-on="$listeners" class="app-card" :elevation="hover ? 16 : 2" @click.prevent="goApp">
       <v-row justify="space-between" align="center" no-gutters>
         <v-col class="col-name" cols="9">
           <v-row>
