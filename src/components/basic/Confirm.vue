@@ -1,13 +1,6 @@
 <template>
   <v-form>
-    <v-dialog
-      v-model="dialog"
-      max-width="600px"
-      max-height="355px"
-      :style="{ zIndex: options.zIndex }"
-      @keydown.esc="cancel"
-      class="confirm-dialog"
-    >
+    <v-dialog v-model="dialog" max-width="600px" max-height="355px" @keydown.esc="cancel" class="confirm-dialog">
       <v-card height="355px">
         <v-responsive height="55px" class="title pa-2">
           <v-card-title color="white" dense flat>
@@ -67,9 +60,7 @@ export default Vue.extend({
     message: '',
     title: '',
     options: {
-      color: 'primary',
-      width: 290,
-      zIndex: 200,
+      checkFn: {},
     },
   }),
   methods: {
@@ -86,6 +77,12 @@ export default Vue.extend({
       });
     },
     agree() {
+      if (this.options.checkFn != undefined && typeof this.options.checkFn === 'function') {
+        if (!this.options.checkFn(this.name)) {
+          console.log('failed to delete target', this.name);
+          return;
+        }
+      }
       this.resolve(true);
       this.dialog = false;
     },
@@ -99,6 +96,7 @@ export default Vue.extend({
 
 <style lang="scss">
 .confirm-dialog {
+  z-index: 1000;
   .title {
     padding-top: 10px;
   }

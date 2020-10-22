@@ -81,10 +81,16 @@ export default Vue.extend({
         .$confirm(
           'Delete',
           'If you erase it, it cannot be reversed. I hope you are careful. Enter project name to delete',
+          {
+            checkFn: (name: string) => name == this.projectName,
+          },
         )
         .then((confirm: boolean) => {
           console.log('onBeforeDeleteItem confirm : ' + confirm);
           if (confirm) {
+            console.log(`delete project ${this.projectName}`);
+
+            /*
             this.$rest
               .delete(`/ui/v1/projects/${this.projectName}`)
               .then(() => {
@@ -93,6 +99,7 @@ export default Vue.extend({
               .catch((error: any) => {
                 console.log(`error to delete project ${this.projectName}`);
               });
+              */
           }
         });
     },
